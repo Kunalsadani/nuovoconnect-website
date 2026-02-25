@@ -1,3 +1,4 @@
+// @ts-ignore
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { z } from 'zod';
 import pg from 'pg';
