@@ -108,7 +108,7 @@ export default function Home() {
                 {...fadeUp}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="bg-white p-5 md:p-6 rounded-2xl border border-border flex flex-col items-center justify-center text-center gap-3 md:gap-4 shadow-[0_4px_24px_rgba(13,27,75,0.06)] hover:shadow-[0_8px_32px_rgba(13,27,75,0.10)] transition-shadow"
+                className="bg-white p-5 md:p-6 rounded-2xl border border-border flex flex-col items-center justify-center text-center gap-3 md:gap-4 shadow-[0_6px_24px_rgba(13,27,75,0.08)]"
               >
                 <div className="w-11 h-11 rounded-xl icon-tile-gradient flex items-center justify-center shrink-0">
                   <Product.icon size={22} />
@@ -144,7 +144,7 @@ export default function Home() {
                 {...fadeUp}
                 transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl shadow-[0_4px_24px_rgba(13,27,75,0.06)] hover:shadow-[0_8px_32px_rgba(13,27,75,0.10)] transition-shadow"
+                className="rounded-2xl shadow-[0_6px_24px_rgba(13,27,75,0.08)]"
               >
                 <Link href={sector.href}>
                   <span
