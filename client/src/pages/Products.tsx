@@ -20,7 +20,7 @@ export default function Products() {
   const products = [
     {
       icon: Globe,
-      name: "Globally Connectivity",
+      name: "Global Connectivity",
       desc: "Keep customers connected worldwide with mobile airtime, data recharges, and eSIM bundles across 550+ operators in 160+ countries."
     },
     {
@@ -134,7 +134,7 @@ export default function Products() {
             Ready to browse our product catalogue?
           </h2>
           <Link href="/contact">
-            <Button size="lg" className="rounded-full px-8 bg-orange-500 text-white shadow-lg shadow-orange-500/25">
+            <Button size="lg" className="btn-gradient rounded-full px-8">
               Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>

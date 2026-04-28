@@ -21,18 +21,18 @@ const fadeUp = {
 export default function Telecommunications() {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Telecommunications" description="Help telecommunications providers grow ARPU and reduce churn with cross-border top-ups, data bundles, eSIMs, and digital value services." path="/who-we-serve/telecommunications" />
+      <SEO title="Telecom" description="Help telecom providers grow ARPU and reduce churn with cross-border top-ups, data bundles, eSIMs, and digital value services." path="/who-we-serve/telecommunications" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Telecommunications</span>
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Telecom</span>
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight mt-3" data-testid="text-telecommunications-title">
               Grow ARPU and reduce churn with services your subscribers love
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Give your telecommunications business a single platform for cross-border top-ups, data bundles, eSIMs, and digital value services — and turn every subscriber interaction into recurring revenue.
+              Give your telecom business a single platform for cross-border top-ups, data bundles, eSIMs, and digital value services — and turn every subscriber interaction into recurring revenue.
             </p>
             <Link href="/contact">
               <Button size="lg" className="rounded-full px-8" data-testid="button-telecommunications-contact">
@@ -92,7 +92,7 @@ export default function Telecommunications() {
           <motion.div {...fadeUp} className="text-center mb-12">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Our Partners & Products</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold mt-3">
-              A complete digital catalogue for modern telecommunications
+              A complete digital catalogue for modern telecom
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -147,7 +147,7 @@ export default function Telecommunications() {
               </div>
             </motion.div>
             <motion.div {...fadeUp} transition={{ delay: 0.2 }}>
-              <img src={globeImg} alt="Global telecommunications connectivity network" className="rounded-3xl aspect-[4/3] object-cover w-full" />
+              <img src={globeImg} alt="Global telecom connectivity network" className="rounded-3xl aspect-[4/3] object-cover w-full" />
             </motion.div>
           </div>
         </div>
@@ -156,10 +156,10 @@ export default function Telecommunications() {
       <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            See how NuovoConnect helps telecommunications providers grow ARPU
+            See how NuovoConnect helps telecom providers grow ARPU
           </h2>
           <Link href="/contact">
-            <Button size="lg" className="rounded-full px-8 bg-orange-500 text-white border-orange-500">
+            <Button size="lg" className="btn-gradient rounded-full px-8">
               Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>

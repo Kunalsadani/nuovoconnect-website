@@ -161,7 +161,7 @@ export default function EsimServices() {
             Let NuovoConnect help you scale globally
           </h2>
           <Link href="/contact">
-            <Button size="lg" className="rounded-full px-8 bg-orange-500 text-white border-orange-500 mt-4">
+            <Button size="lg" className="btn-gradient rounded-full px-8 mt-4">
               Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>

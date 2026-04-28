@@ -34,7 +34,7 @@ export function Footer() {
               <h4 className="font-semibold mb-5 text-white text-sm uppercase tracking-wider">Who We Serve</h4>
               <ul className="space-y-2.5 text-sm text-gray-400">
                 <li><Link href="/who-we-serve/retail-merchants" className="hover:text-white transition-colors cursor-pointer">Retail Merchants</Link></li>
-                <li><Link href="/who-we-serve/telecommunications" className="hover:text-white transition-colors cursor-pointer">Telecommunications</Link></li>
+                <li><Link href="/who-we-serve/telecommunications" className="hover:text-white transition-colors cursor-pointer">Telecom</Link></li>
                 <li><Link href="/who-we-serve/ewallets" className="hover:text-white transition-colors cursor-pointer">eWallets</Link></li>
                 <li><Link href="/who-we-serve/banking" className="hover:text-white transition-colors cursor-pointer">Relocation Providers</Link></li>
                 <li><Link href="/who-we-serve/forex" className="hover:text-white transition-colors cursor-pointer">Forex</Link></li>

@@ -20,7 +20,7 @@ const fadeUp = {
 export default function WhoWeServe() {
   const sectors = [
     { icon: ShoppingCart, title: "Retail Merchants", desc: "Unlock new revenue channels and diversify your portfolio with services tailored for global communities.", href: "/who-we-serve/retail-merchants" },
-    { icon: Radio, title: "Telecommunications", desc: "Deliver bespoke data & SIM solutions for frictionless connectivity across borders.", href: "/who-we-serve/telecommunications" },
+    { icon: Radio, title: "Telecom", desc: "Deliver bespoke data & SIM solutions for frictionless connectivity across borders.", href: "/who-we-serve/telecommunications" },
     { icon: ScanLine, title: "eSIM Services", desc: "Deliver digital SIM solutions for frictionless connectivity across borders without needing physical SIM cards.", href: "/who-we-serve/esim-services" },
     { icon: Landmark, title: "Relocation Providers", desc: "Offer a comprehensive suite of banking and payment capabilities to your customers through a single API.", href: "/who-we-serve/banking" },
     { icon: Wallet, title: "eWallets", desc: "Grow faster and strengthen user retention with frictionless, highly relevant digital offerings.", href: "/who-we-serve/ewallets" },
@@ -31,7 +31,7 @@ export default function WhoWeServe() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Who We Serve" description="NuovoConnect serves retail merchants, telecommunications, eWallets, relocation providers, forex, super apps, and gaming." path="/who-we-serve" />
+      <SEO title="Who We Serve" description="NuovoConnect serves retail merchants, telecom, eWallets, relocation providers, forex, super apps, and gaming." path="/who-we-serve" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
@@ -84,7 +84,7 @@ export default function WhoWeServe() {
             Ready to explore bespoke solutions for your business?
           </h2>
           <Link href="/contact">
-            <Button size="lg" className="rounded-full px-8 bg-orange-500 text-white border-orange-500 mt-4">
+            <Button size="lg" className="btn-gradient rounded-full px-8 mt-4">
               Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>

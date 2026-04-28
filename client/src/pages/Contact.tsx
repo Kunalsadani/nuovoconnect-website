@@ -70,14 +70,14 @@ export default function Contact() {
               <div className="grid md:grid-cols-5">
                 <div className="md:col-span-2 bg-gradient-to-br from-gray-900 to-gray-800 p-10 text-white flex flex-col justify-between">
                   <div>
-                    <h3 className="text-2xl font-display font-bold mb-4">Reach out to us</h3>
-                    <p className="text-gray-300 mb-8 text-sm leading-relaxed">
+                    <h3 className="text-2xl font-display font-bold mb-4 text-white">Reach out to us</h3>
+                    <p className="text-white/80 mb-8 text-sm leading-relaxed">
                       Looking to scale your digital value offerings? Our specialists are here to help you integrate and grow.
                     </p>
                   </div>
 
                   <div className="space-y-6">
-                    <div className="flex items-center gap-3 text-sm text-gray-300">
+                    <div className="flex items-center gap-3 text-sm text-white/80">
                       <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
                         <Globe2 size={14} />
                       </div>

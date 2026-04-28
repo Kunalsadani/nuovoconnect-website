@@ -7,7 +7,7 @@ import logoImg from "@/assets/nuovoconnect-logo.png";
 const industrySubPages = [
   { name: "Overview", href: "/who-we-serve", bold: true },
   { name: "Retail Merchants", href: "/who-we-serve/retail-merchants" },
-  { name: "Telecommunications", href: "/who-we-serve/telecommunications" },
+  { name: "Telecom", href: "/who-we-serve/telecommunications" },
   { name: "eWallets", href: "/who-we-serve/ewallets" },
   { name: "Relocation Providers", href: "/who-we-serve/banking" },
   { name: "Forex", href: "/who-we-serve/forex" },

@@ -60,7 +60,10 @@
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
-    color: hsl(var(--foreground));
+    /* Inherit color from parent so utility classes like `text-white` on a
+       dark CTA section cascade to nested headings. The body element sets
+       `text-foreground` (navy) as the default. */
+    color: inherit;
   }
 }
 

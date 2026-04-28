@@ -19,7 +19,7 @@ const fadeUp = {
 
 export default function Home() {
   const products = [
-    { icon: Globe, label: "Globally Connectivity" },
+    { icon: Globe, label: "Global Connectivity" },
     { icon: Landmark, label: "Global Bank Accounts" },
     { icon: CreditCard, label: "Payment Processing" },
     { icon: Heart, label: "Loyalty & Retention Tools" },
@@ -27,7 +27,7 @@ export default function Home() {
 
   const sectors = [
     { icon: ShoppingCart, title: "Retail Merchants", href: "/who-we-serve/retail-merchants" },
-    { icon: Radio, title: "Telecommunications", href: "/who-we-serve/telecommunications" },
+    { icon: Radio, title: "Telecom", href: "/who-we-serve/telecommunications" },
     { icon: Wallet, title: "eWallets", href: "/who-we-serve/ewallets" },
     { icon: Banknote, title: "Forex", href: "/who-we-serve/forex" },
     { icon: Layers, title: "Super Apps", href: "/who-we-serve/super-apps" },
@@ -101,26 +101,25 @@ export default function Home() {
               Digital products tailored for every region
             </h2>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {products.map((Product, i) => (
               <motion.div
                 key={i}
                 {...fadeUp}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -4, boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
-                className="bg-white p-6 rounded-2xl border border-border flex flex-col items-center justify-center text-center gap-4"
-                style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
+                whileHover={{ y: -4 }}
+                className="bg-white p-5 md:p-6 rounded-2xl border border-border flex flex-col items-center justify-center text-center gap-3 md:gap-4 shadow-[0_4px_24px_rgba(13,27,75,0.06)] hover:shadow-[0_8px_32px_rgba(13,27,75,0.10)] transition-shadow"
               >
-                <div className="w-11 h-11 rounded-xl icon-tile-gradient flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl icon-tile-gradient flex items-center justify-center shrink-0">
                   <Product.icon size={22} />
                 </div>
-                <span className="font-semibold text-sm text-foreground">{Product.label}</span>
+                <span className="font-semibold text-sm text-foreground leading-tight break-words">{Product.label}</span>
               </motion.div>
             ))}
           </div>
           <div className="text-center mt-10">
             <Link href="/products">
-              <Button variant="outline" className="rounded-full px-8 border-[1.5px] border-gray-300 text-foreground hover:border-primary hover:text-primary hover:bg-[#F5F3FF]">
+              <Button className="btn-gradient rounded-full px-8" data-testid="button-browse-all-products">
                 Browse All Products <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -138,25 +137,24 @@ export default function Home() {
               Explore our client-centric, industry-specific solutions — underpinned by regional expertise and worldwide support.
             </p>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {sectors.map((sector, i) => (
               <motion.div
                 key={i}
                 {...fadeUp}
                 transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -4, boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
-                className="rounded-2xl"
-                style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
+                whileHover={{ y: -4 }}
+                className="rounded-2xl shadow-[0_4px_24px_rgba(13,27,75,0.06)] hover:shadow-[0_8px_32px_rgba(13,27,75,0.10)] transition-shadow"
               >
                 <Link href={sector.href}>
                   <span
-                    className="p-6 rounded-2xl bg-white border border-border flex items-center gap-4 cursor-pointer transition-colors hover:border-primary/40"
+                    className="p-5 md:p-6 rounded-2xl bg-white border border-border flex items-center gap-3 md:gap-4 cursor-pointer transition-colors hover:border-primary/40 min-w-0"
                     data-testid={`link-sector-${sector.href.split('/').pop()}`}
                   >
                     <div className="w-11 h-11 rounded-xl icon-tile-gradient flex items-center justify-center shrink-0">
                       <sector.icon size={22} />
                     </div>
-                    <h3 className="font-display font-bold text-foreground">{sector.title}</h3>
+                    <h3 className="font-display font-bold text-foreground text-sm md:text-base leading-tight break-words min-w-0">{sector.title}</h3>
                   </span>
                 </Link>
               </motion.div>
