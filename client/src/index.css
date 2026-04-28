@@ -5,45 +5,49 @@
 @tailwind utilities;
 
 :root {
-  /* Warm, sophisticated palette based on DT One structure but warmer */
-  
-  /* Primary: Deep Warm Orange/Amber */
-  --primary: 25 90% 48%;
+  /* Modern fintech palette — purple / navy / soft blue-tinted neutrals */
+
+  /* Primary: Purple */
+  --primary: 262 83% 58%;          /* #7C3AED */
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Soft Warm Grey/Beige */
-  --secondary: 30 20% 96%;
-  --secondary-foreground: 25 10% 20%;
+  /* Secondary: Soft blue-tinted off-white */
+  --secondary: 226 100% 97%;       /* #F0F4FF */
+  --secondary-foreground: 229 70% 17%;
 
-  /* Backgrounds: Warm Off-Whites */
-  --background: 30 25% 98%;
-  --foreground: 25 10% 20%;
+  /* Backgrounds: Cool light gray */
+  --background: 240 7% 96%;        /* #F4F4F6 */
+  --foreground: 229 70% 17%;       /* #0D1B4B navy */
 
-  /* Cards: White with subtle warmth */
+  /* Cards: White */
   --card: 0 0% 100%;
-  --card-foreground: 25 10% 20%;
+  --card-foreground: 229 70% 17%;
 
-  /* Muted elements */
-  --muted: 30 15% 92%;
-  --muted-foreground: 25 5% 45%;
+  /* Popovers */
+  --popover: 0 0% 100%;
+  --popover-foreground: 229 70% 17%;
+
+  /* Muted */
+  --muted: 240 5% 96%;             /* near #F4F4F6 */
+  --muted-foreground: 220 9% 46%;  /* #6B7280 */
 
   /* Accents */
-  --accent: 35 90% 60%;
-  --accent-foreground: 25 10% 20%;
+  --accent: 255 92% 76%;           /* #A78BFA lavender */
+  --accent-foreground: 229 70% 17%;
 
   /* Destructive */
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
   /* Borders */
-  --border: 30 15% 90%;
-  --input: 30 15% 90%;
-  --ring: 25 90% 48%;
+  --border: 220 13% 91%;           /* #E5E7EB */
+  --input: 220 13% 91%;
+  --ring: 262 83% 58%;
 
-  --radius: 0.75rem;
+  --radius: 1rem;
 
   --font-sans: 'Plus Jakarta Sans', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
 }
 
 @layer base {
@@ -52,20 +56,118 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
+    color: hsl(var(--foreground));
   }
 }
 
+/* Pastel purple → blue → green accent gradient used for highlight headlines */
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-orange-500 to-amber-500;
+  background-image: linear-gradient(135deg, #A78BFA 0%, #60A5FA 50%, #34D399 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .hero-glow {
-  background: radial-gradient(circle at center, rgba(249, 115, 22, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(ellipse at 60% 40%,
+    rgba(167,139,250,0.25) 0%,
+    rgba(96,165,250,0.15) 40%,
+    rgba(52,211,153,0.10) 70%,
+    transparent 100%);
+  filter: blur(20px);
 }
 
 .glass-card {
-  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl shadow-orange-900/5;
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  box-shadow: 0 4px 24px rgba(13,27,75,0.08);
 }
+
+/* Primary gradient pill button utility — apply alongside any <Button> for the
+   purple → blue gradient pill style with hover scale + shadow lift. */
+.btn-gradient {
+  background: linear-gradient(135deg, #7C3AED, #3B82F6) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.35);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #6D28D9, #2563EB) !important;
+  box-shadow: 0 6px 20px rgba(124,58,237,0.45);
+  transform: scale(1.03);
+}
+
+/* Gentle gradient icon-tile background used across cards */
+.icon-tile-gradient {
+  background: linear-gradient(135deg, #EDE9FE, #DBEAFE);
+  color: #7C3AED;
+}
+
+/* ---------------------------------------------------------------------
+   Legacy color shims
+   The codebase has many pages still referencing orange/amber/gray-900
+   Tailwind utility classes from the old palette. Rather than touch every
+   file, these shims re-map those classes to the new purple/navy palette
+   so the entire site picks up the new theme automatically. New code
+   should NOT add new orange-/amber- classes.
+--------------------------------------------------------------------- */
+
+/* Solid color overrides */
+.bg-orange-50 { background-color: #F5F3FF !important; }
+.bg-orange-100 { background-color: #EDE9FE !important; }
+.bg-orange-500 { background-color: #7C3AED !important; }
+.bg-amber-50 { background-color: #EFF6FF !important; }
+.bg-amber-100 { background-color: #DBEAFE !important; }
+
+/* Translucent variants */
+.bg-orange-50\/30 { background-color: rgba(245,243,255,0.3) !important; }
+.bg-orange-50\/50 { background-color: rgba(245,243,255,0.5) !important; }
+.bg-orange-200 { background-color: #DDD6FE !important; }
+.bg-orange-200\/80 { background-color: rgba(221,214,254,0.8) !important; }
+
+/* Hover variants */
+.hover\:bg-orange-50:hover { background-color: #F5F3FF !important; }
+.hover\:bg-orange-50\/30:hover { background-color: rgba(245,243,255,0.3) !important; }
+.hover\:bg-orange-50\/50:hover { background-color: rgba(245,243,255,0.5) !important; }
+
+/* Borders */
+.border-orange-100 { border-color: #EDE9FE !important; }
+.border-orange-200 { border-color: #DDD6FE !important; }
+.border-orange-500 { border-color: #7C3AED !important; }
+
+/* Text */
+.text-orange-700 { color: #5B21B6 !important; }
+
+/* Gradient stops */
+.from-orange-50 {
+  --tw-gradient-from: #F5F3FF var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(245 243 255 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.from-orange-100 {
+  --tw-gradient-from: #EDE9FE var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(237 233 254 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.to-orange-50 { --tw-gradient-to: #F5F3FF var(--tw-gradient-to-position) !important; }
+.to-amber-50 { --tw-gradient-to: #DBEAFE var(--tw-gradient-to-position) !important; }
+
+/* Shadow color variables (used by Tailwind shadow-* color modifiers) */
+.shadow-orange-500\/25 { --tw-shadow-color: rgba(124,58,237,0.35) !important; --tw-shadow: var(--tw-shadow-colored) !important; }
+.shadow-orange-900\/5  { --tw-shadow-color: rgba(13,27,75,0.05) !important;  --tw-shadow: var(--tw-shadow-colored) !important; }
+.shadow-orange-900\/10 { --tw-shadow-color: rgba(13,27,75,0.10) !important;  --tw-shadow: var(--tw-shadow-colored) !important; }
+
+/* Map legacy dark "gray-900" backgrounds to the new deep navy used for
+   dark CTA sections and the footer. */
+.bg-gray-900 { background-color: #0D1B4B !important; }
+.from-gray-900 {
+  --tw-gradient-from: #0D1B4B var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(13 27 75 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.to-gray-800 { --tw-gradient-to: #1E2A6B var(--tw-gradient-to-position) !important; }

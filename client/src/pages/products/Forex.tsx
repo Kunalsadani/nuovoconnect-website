@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ArrowRight, CheckCircle2, Globe2, Smartphone,
-  Gift, ScanLine, Zap, Radio
+  Gift, ScanLine, Zap, TrendingUp
 } from "lucide-react";
-import globeImg from "@/assets/attached/image_1771511000228.png";
+import meshGlobeImg from "@/assets/attached/image_1771511729836.png";
 import { SEO } from "@/components/SEO";
 
 const fadeUp = {
@@ -18,24 +18,24 @@ const fadeUp = {
   transition: { duration: 0.6 }
 };
 
-export default function MobileOperators() {
+export default function Forex() {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Mobile Operators" description="Partner with NuovoConnect to extend your mobile operator reach with cross-border top-ups, data bundles, and digital value services." path="/who-we-serve/mobile-operators" />
+      <SEO title="Forex" description="Help forex providers grow wallet share with digital value services — top-ups, gift cards, and bill payments alongside currency exchange and FX transfers." path="/who-we-serve/forex" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Mobile Operators</span>
-            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight mt-3" data-testid="text-mobile-title">
-              Drive recurring revenue with meaningful services that connect communities
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Forex</span>
+            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight mt-3" data-testid="text-forex-title">
+              Turn every FX customer into a digital-first relationship
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Unlock new revenue streams by providing cost-effective, cross-border mobile top-up solutions and other prepaid services to millions of diaspora customers.
+              Add high-margin digital value services alongside your currency exchange and FX transfers — and give customers more reasons to come back to your app or branch every week.
             </p>
             <Link href="/contact">
-              <Button size="lg" className="rounded-full px-8" data-testid="button-mobile-contact">
+              <Button size="lg" className="rounded-full px-8" data-testid="button-forex-contact">
                 Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
@@ -48,9 +48,9 @@ export default function MobileOperators() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: Radio, title: "Make connectivity accessible to all with white-label solutions", desc: "Your customers can send top-ups, data bundles, and pay bills across the world with a simple feature phone and without the internet — via text message or USSD." },
-              { icon: Zap, title: "Scale fast with single connection", desc: "Forget time-consuming integrations and complex product management. With a single connection — and contract — NuovoConnect solves it all." },
-              { icon: Globe2, title: "Instant real-time delivery", desc: "Top-ups and vouchers are delivered in real time to connect customers and their loved ones instantly." },
+              { icon: Globe2, title: "A global digital catalogue, ready to plug into your FX app", desc: "Add products from 2,100+ partners across 170+ countries through a single API — no extra agreements, no extra ops." },
+              { icon: TrendingUp, title: "Lift wallet share around every FX trade", desc: "Cross-sell mobile top-ups, gift cards, and bill payments alongside currency exchange to grow per-customer value." },
+              { icon: Zap, title: "Go live in days, not quarters", desc: "Developer-friendly APIs, full hosting, real-time delivery, and 24/7 support — so your team can focus on the FX product." },
             ].map((item, i) => (
               <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.15 }}>
                 <Card className="h-full border-0 shadow-none bg-orange-50/50">
@@ -68,38 +68,21 @@ export default function MobileOperators() {
         </div>
       </section>
 
-      <section className="py-12 border-y border-orange-200 bg-orange-200/80">
-        <div className="container mx-auto px-4 md:px-6">
-          <h3 className="text-center text-2xl md:text-3xl font-display font-bold mb-8 text-foreground">Access our Network</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: "3bn+", label: "Consumer Access" },
-              { value: "170+", label: "Countries" },
-              { value: "2,100+", label: "Partners" },
-              { value: "15k+", label: "Customised Products" },
-            ].map((stat, i) => (
-              <div key={i} className="p-2">
-                <div className="text-3xl font-display font-bold text-primary mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Our Partners & Products</span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mt-3">
-              Diversify revenue with convenient services that connect customers worldwide
+            <h2 className="text-3xl md:text-4xl font-display font-bold">
+              The digital products that pair perfectly with FX
             </h2>
+            <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+              Customers visit your app to move money — give them a reason to stay. Add airtime, data, eSIMs, vouchers, and bill payments to your FX flow with one connection.
+            </p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: Smartphone, title: "Mobile Airtime & Data Top-ups", desc: "Enable users to purchase and send airtime and data top-ups worldwide." },
-              { icon: ScanLine, title: "eSIMs", desc: "Unlock growth with the world's fastest-growing connectivity product." },
-              { icon: Gift, title: "Branded Vouchers & Gift Cards", desc: "Use non-cash incentives to reward interactions and drive brand loyalty." },
+              { icon: Smartphone, title: "Mobile Airtime & Data Top-ups", desc: "Let customers send airtime and data to recipients worldwide right after their FX transfer clears." },
+              { icon: ScanLine, title: "eSIMs", desc: "Bundle travel and roaming eSIMs with multi-currency wallets for the modern global customer." },
+              { icon: Gift, title: "Branded Vouchers & Gift Cards", desc: "Reward FX traders with high-perceived-value gift cards to drive sign-up, referral, and repeat trades." },
             ].map((item, i) => (
               <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }}>
                 <Card className="h-full">
@@ -126,28 +109,30 @@ export default function MobileOperators() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp}>
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider">Phone-to-Phone Solutions</span>
+              <span className="text-sm font-semibold text-primary uppercase tracking-wider">One Connection, One Contract</span>
               <h2 className="text-3xl md:text-4xl font-display font-bold mt-3 mb-6">
-                Drive recurring revenues with our white-label phone-to-phone solution
+                Open new corridors and product lines without new integrations
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                Let diaspora customers send data, call, or text time instantly with our white-label, easy-to-implement API for mobile operators. Users can complete top-ups with a simple feature phone via text message or USSD — ideal for users without internet access.
+                Scale into new currencies and digital product categories with one global partner. Our in-market expertise — built alongside leading FX and fintech brands — keeps your launches fast and compliant.
               </p>
               <div className="space-y-4">
                 {[
-                  "A unique service for diaspora customers",
-                  "Customised language, currencies, and short menus",
-                  "Shortened user journey for returning users"
-                ].map((text, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="text-primary shrink-0" size={18} />
-                    <span className="text-muted-foreground">{text}</span>
+                  { title: "Developer-friendly APIs", desc: "Drop a unified digital catalogue into your existing FX app, website, or branch portal in days." },
+                  { title: "24/7 operational support", desc: "Hosting, delivery, monitoring, and reconciliation all handled by our team — including overnight FX windows." },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4">
+                    <CheckCircle2 className="text-primary shrink-0 mt-1" size={20} />
+                    <div>
+                      <h3 className="font-display font-bold mb-1">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </motion.div>
             <motion.div {...fadeUp} transition={{ delay: 0.2 }}>
-              <img src={globeImg} alt="Global connectivity network" className="rounded-3xl aspect-[4/3] object-cover w-full" />
+              <img src={meshGlobeImg} alt="Global currency exchange and FX network" className="rounded-3xl aspect-[4/3] object-cover w-full" />
             </motion.div>
           </div>
         </div>
@@ -156,10 +141,10 @@ export default function MobileOperators() {
       <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Discover how NuovoConnect unlocks growth for your business
+            See how NuovoConnect helps forex providers grow wallet share
           </h2>
           <Link href="/contact">
-            <Button size="lg" className="rounded-full px-8 bg-orange-500 text-white border-orange-500">
+            <Button size="lg" className="rounded-full px-8 bg-orange-500 text-white border-orange-500 mt-4">
               Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>

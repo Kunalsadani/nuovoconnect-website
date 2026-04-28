@@ -9,8 +9,13 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row gap-10 mb-12">
           <div className="lg:flex-1">
             <div className="flex items-center gap-2 mb-5">
-              <img src={logoImg} alt="NuovoConnect" className="w-[36px] h-[36px] object-contain" />
-              <span className="text-[1.9rem] tracking-tight text-white" style={{ fontFamily: "'Geist', sans-serif", fontWeight: 900 }}>
+              <img
+                src={logoImg}
+                alt="NuovoConnect"
+                className="w-[36px] h-[36px] object-contain"
+                style={{ filter: "hue-rotate(220deg) saturate(0.95)" }}
+              />
+              <span className="text-[1.9rem] tracking-tight text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800 }}>
                 NuovoConnect
               </span>
             </div>
@@ -28,13 +33,13 @@ export function Footer() {
             <div>
               <h4 className="font-semibold mb-5 text-white text-sm uppercase tracking-wider">Who We Serve</h4>
               <ul className="space-y-2.5 text-sm text-gray-400">
-                <li><Link href="/who-we-serve/retail-networks" className="hover:text-white transition-colors cursor-pointer">Retail Networks</Link></li>
-                <li><Link href="/who-we-serve/mobile-operators" className="hover:text-white transition-colors cursor-pointer">Mobile Operators</Link></li>
+                <li><Link href="/who-we-serve/retail-merchants" className="hover:text-white transition-colors cursor-pointer">Retail Merchants</Link></li>
+                <li><Link href="/who-we-serve/telecommunications" className="hover:text-white transition-colors cursor-pointer">Telecommunications</Link></li>
                 <li><Link href="/who-we-serve/ewallets" className="hover:text-white transition-colors cursor-pointer">eWallets</Link></li>
                 <li><Link href="/who-we-serve/banking" className="hover:text-white transition-colors cursor-pointer">Relocation Providers</Link></li>
-                <li><Link href="/who-we-serve/money-transfer-operators" className="hover:text-white transition-colors cursor-pointer">Money Transfer Operators</Link></li>
+                <li><Link href="/who-we-serve/forex" className="hover:text-white transition-colors cursor-pointer">Forex</Link></li>
                 <li><Link href="/who-we-serve/super-apps" className="hover:text-white transition-colors cursor-pointer">Super Apps</Link></li>
-                <li><Link href="/who-we-serve/creator-economy" className="hover:text-white transition-colors cursor-pointer">Creator Economy</Link></li>
+                <li><Link href="/who-we-serve/gaming" className="hover:text-white transition-colors cursor-pointer">Gaming</Link></li>
               </ul>
             </div>
 
@@ -42,7 +47,6 @@ export function Footer() {
               <ul className="space-y-4 text-sm pt-[2.125rem]">
                 <li><Link href="/products" className="hover:text-white transition-colors cursor-pointer font-semibold text-white uppercase tracking-wider">Products</Link></li>
                 <li><Link href="/network" className="hover:text-white transition-colors cursor-pointer font-semibold text-white uppercase tracking-wider">Network</Link></li>
-                <li><Link href="/solutions" className="hover:text-white transition-colors cursor-pointer font-semibold text-white uppercase tracking-wider">SOLUTIONS</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition-colors cursor-pointer font-semibold text-white uppercase tracking-wider">CONTACT</Link></li>
               </ul>
             </div>

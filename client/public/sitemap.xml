@@ -21,27 +21,22 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.nuovoconnect.com/solutions</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.nuovoconnect.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.nuovoconnect.com/who-we-serve/retail-networks</loc>
+    <loc>https://www.nuovoconnect.com/who-we-serve/retail-merchants</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nuovoconnect.com/who-we-serve/mobile-operators</loc>
+    <loc>https://www.nuovoconnect.com/who-we-serve/telecommunications</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nuovoconnect.com/who-we-serve/money-transfer-operators</loc>
+    <loc>https://www.nuovoconnect.com/who-we-serve/forex</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -56,7 +51,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nuovoconnect.com/who-we-serve/creator-economy</loc>
+    <loc>https://www.nuovoconnect.com/who-we-serve/gaming</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

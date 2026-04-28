@@ -1,33 +1,42 @@
 import { motion } from "framer-motion";
 
+const STROKE = "rgba(124, 58, 237, 0.30)";   /* purple */
+const STROKE_SOFT = "rgba(124, 58, 237, 0.20)";
+const FILL_DOT = "#7C3AED";
+const GRAD_INNER = "rgba(167, 139, 250, 0.12)";
+const GRAD_OUTER = "rgba(167, 139, 250, 0.0)";
+
 export function NetworkGlobe() {
   return (
     <div className="relative w-full h-full min-h-[400px] flex items-center justify-center">
-      <div className="absolute inset-0 bg-orange-500/20 blur-[100px] rounded-full" />
-      
+      <div
+        className="absolute inset-0 blur-[100px] rounded-full"
+        style={{ backgroundColor: "rgba(167,139,250,0.20)" }}
+      />
+
       <svg viewBox="0 0 400 400" className="w-full h-full max-w-[500px] animate-[spin_60s_linear_infinite]">
         <defs>
           <radialGradient id="globeGrad" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0%" stopColor="rgba(255, 138, 76, 0.1)" />
-            <stop offset="100%" stopColor="rgba(255, 138, 76, 0.0)" />
+            <stop offset="0%" stopColor={GRAD_INNER} />
+            <stop offset="100%" stopColor={GRAD_OUTER} />
           </radialGradient>
         </defs>
-        
-        <circle cx="200" cy="200" r="180" fill="url(#globeGrad)" stroke="rgba(249, 115, 22, 0.2)" strokeWidth="1" />
-        
-        <motion.ellipse 
-          cx="200" cy="200" rx="180" ry="80" 
-          stroke="rgba(249, 115, 22, 0.3)" strokeWidth="1" fill="none"
+
+        <circle cx="200" cy="200" r="180" fill="url(#globeGrad)" stroke={STROKE_SOFT} strokeWidth="1" />
+
+        <motion.ellipse
+          cx="200" cy="200" rx="180" ry="80"
+          stroke={STROKE} strokeWidth="1" fill="none"
           transform="rotate(45, 200, 200)"
         />
-        <motion.ellipse 
-          cx="200" cy="200" rx="180" ry="80" 
-          stroke="rgba(249, 115, 22, 0.3)" strokeWidth="1" fill="none"
+        <motion.ellipse
+          cx="200" cy="200" rx="180" ry="80"
+          stroke={STROKE} strokeWidth="1" fill="none"
           transform="rotate(-45, 200, 200)"
         />
-        <motion.ellipse 
-          cx="200" cy="200" rx="180" ry="40" 
-          stroke="rgba(249, 115, 22, 0.2)" strokeWidth="1" fill="none"
+        <motion.ellipse
+          cx="200" cy="200" rx="180" ry="40"
+          stroke={STROKE_SOFT} strokeWidth="1" fill="none"
         />
 
         {[...Array(8)].map((_, i) => (
@@ -35,10 +44,9 @@ export function NetworkGlobe() {
             key={i}
             cx={200 + Math.cos(i * 0.8) * 140}
             cy={200 + Math.sin(i * 0.8) * 60}
-            r="4"
-            fill="#F97316"
+            r={4}
+            fill={FILL_DOT}
             animate={{
-              r: [4, 6, 4],
               opacity: [0.5, 1, 0.5]
             }}
             transition={{
@@ -49,12 +57,12 @@ export function NetworkGlobe() {
           />
         ))}
 
-        <path d="M60 200 Q200 100 340 200" stroke="rgba(249, 115, 22, 0.2)" fill="none" />
-        <path d="M200 60 Q100 200 200 340" stroke="rgba(249, 115, 22, 0.2)" fill="none" />
+        <path d="M60 200 Q200 100 340 200" stroke={STROKE_SOFT} fill="none" />
+        <path d="M200 60 Q100 200 200 340" stroke={STROKE_SOFT} fill="none" />
       </svg>
 
-      <motion.div 
-        className="absolute top-[20%] right-[10%] bg-white p-3 rounded-xl shadow-lg border border-orange-100 flex items-center gap-3"
+      <motion.div
+        className="absolute top-[20%] right-[10%] bg-white p-3 rounded-xl shadow-lg border border-border flex items-center gap-3"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5 }}
@@ -68,8 +76,8 @@ export function NetworkGlobe() {
         </div>
       </motion.div>
 
-      <motion.div 
-        className="absolute bottom-[20%] left-[10%] bg-white p-3 rounded-xl shadow-lg border border-orange-100 flex items-center gap-3"
+      <motion.div
+        className="absolute bottom-[20%] left-[10%] bg-white p-3 rounded-xl shadow-lg border border-border flex items-center gap-3"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.8 }}
@@ -83,8 +91,8 @@ export function NetworkGlobe() {
         </div>
       </motion.div>
 
-      <motion.div 
-        className="absolute top-[55%] right-[5%] bg-white p-3 rounded-xl shadow-lg border border-orange-100 flex items-center gap-3"
+      <motion.div
+        className="absolute top-[55%] right-[5%] bg-white p-3 rounded-xl shadow-lg border border-border flex items-center gap-3"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.1 }}

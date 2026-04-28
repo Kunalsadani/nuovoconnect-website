@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
 import {
-  ArrowRight, CheckCircle2, Globe2, Smartphone,
-  Gamepad2, Coins, ScanLine, CreditCard,
-  Building2, Users, Wallet, ShoppingCart, Layers, Landmark
+  ArrowRight, Globe, CreditCard,
+  Wallet, ShoppingCart, Layers, Landmark, Heart, Radio, Banknote, Gamepad2
 } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { NetworkGlobe } from "@/components/NetworkGlobe";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { SEO } from "@/components/SEO";
 
 const fadeUp = {
@@ -21,32 +19,39 @@ const fadeUp = {
 
 export default function Home() {
   const products = [
-    { icon: Smartphone, label: "Mobile Airtime & Data Recharges" },
-    { icon: ScanLine, label: "eSIM Bundles" },
+    { icon: Globe, label: "Globally Connectivity" },
     { icon: Landmark, label: "Global Bank Accounts" },
     { icon: CreditCard, label: "Payment Processing" },
-    { icon: ShoppingCart, label: "Brand Vouchers & Gift Cards" },
-    { icon: Gamepad2, label: "Gaming Pins" },
-    { icon: Users, label: "Loyalty Programs for Gamers" },
-    { icon: Coins, label: "Crypto Vouchers" },
+    { icon: Heart, label: "Loyalty & Retention Tools" },
   ];
 
   const sectors = [
-    { icon: ShoppingCart, title: "Retail Networks" },
-    { icon: Smartphone, title: "Mobile Operators" },
-    { icon: Wallet, title: "eWallets" },
-    { icon: Building2, title: "Money Transfer Operators" },
-    { icon: Layers, title: "Super Apps" },
-    { icon: Users, title: "Creator Economy" },
+    { icon: ShoppingCart, title: "Retail Merchants", href: "/who-we-serve/retail-merchants" },
+    { icon: Radio, title: "Telecommunications", href: "/who-we-serve/telecommunications" },
+    { icon: Wallet, title: "eWallets", href: "/who-we-serve/ewallets" },
+    { icon: Banknote, title: "Forex", href: "/who-we-serve/forex" },
+    { icon: Layers, title: "Super Apps", href: "/who-we-serve/super-apps" },
+    { icon: Gamepad2, title: "Gaming", href: "/who-we-serve/gaming" },
   ];
-
 
   return (
     <div className="min-h-screen bg-background font-sans overflow-x-hidden">
       <SEO title="Global Digital Value Services Platform" description="NuovoConnect is a worldwide B2B platform for mobile top-ups, data bundles, gaming pins, gift cards, crypto vouchers, and digital micropayments across 170+ countries." path="/" />
       <Navigation />
 
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+        <div
+          aria-hidden
+          className="absolute pointer-events-none hero-glow"
+          style={{
+            top: "10%",
+            left: "30%",
+            width: "800px",
+            height: "600px",
+            zIndex: 0,
+          }}
+        />
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -54,7 +59,7 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl lg:text-7xl font-display font-bold leading-[1.1] mb-6 tracking-tight text-foreground" data-testid="text-hero-title">
+              <h1 className="text-5xl lg:text-7xl font-display font-extrabold leading-[1.1] mb-6 tracking-tight text-foreground" data-testid="text-hero-title">
                 Activate global audiences.{" "}
                 <span className="text-gradient">Unlock new territories.</span>
               </h1>
@@ -66,7 +71,7 @@ export default function Home() {
                   <Button
                     size="lg"
                     data-testid="button-hero-contact"
-                    className="rounded-full px-8 text-lg shadow-lg shadow-orange-500/25"
+                    className="btn-gradient rounded-full px-8 text-base"
                   >
                     Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
@@ -84,82 +89,38 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange-50 to-transparent -z-10" />
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-10" />
       </section>
 
-      <section className="py-10 border-y border-orange-200 bg-orange-100/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 md:px-6">
-          <h3 className="text-center text-2xl md:text-3xl font-display font-bold mb-8 text-foreground" data-testid="text-access-network">Access our network</h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
-            {[
-              { value: "3bn+", label: "Consumer Access" },
-              { value: "170+", label: "Countries" },
-              { value: "2,100+", label: "Partners" },
-              { value: "200mn+", label: "Transactions Processed" },
-              { value: "15k+", label: "Customised Products" },
-            ].map((stat, i) => (
-              <div key={i} className="p-2">
-                <div className="text-3xl font-display font-bold text-primary mb-1" data-testid={`text-stat-${i}`}>{stat.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-white relative">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                icon: Globe2,
-                title: "Compelling, affordable digital incentives",
-                desc: "Provide non-cash rewards and digital motivators with strong perceived value and demonstrable results at minimal cost."
-              },
-              {
-                icon: Layers,
-                title: "Worldwide reach with local relevance",
-                desc: "Grow rapidly with our network that delivers highly pertinent, region-specific products and partner connections."
-              },
-            ].map((item, idx) => (
-              <motion.div key={idx} {...fadeUp} transition={{ delay: idx * 0.15 }}
-                className="group p-8 rounded-3xl bg-background border border-border hover:border-primary/30 transition-all duration-300"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-primary">
-                  <item.icon size={28} />
-                </div>
-                <h3 className="text-xl font-display font-bold mb-4">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Our Offerings</span>
-            <h2 className="text-3xl md:text-5xl font-display font-bold mt-3 mb-6">
+            <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: "#7C3AED", letterSpacing: "0.05em" }}>
+              Our Offerings
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mt-3 mb-6 text-foreground">
               Digital products tailored for every region
             </h2>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {products.map((Product, i) => (
-              <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }}
-                className="bg-white p-6 rounded-2xl border border-orange-100 flex flex-col items-center justify-center text-center gap-4"
+              <motion.div
+                key={i}
+                {...fadeUp}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -4, boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
+                className="bg-white p-6 rounded-2xl border border-border flex flex-col items-center justify-center text-center gap-4"
+                style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
               >
-                <div className="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center text-primary">
-                  <Product.icon size={28} />
+                <div className="w-11 h-11 rounded-xl icon-tile-gradient flex items-center justify-center">
+                  <Product.icon size={22} />
                 </div>
-                <span className="font-semibold text-sm">{Product.label}</span>
+                <span className="font-semibold text-sm text-foreground">{Product.label}</span>
               </motion.div>
             ))}
           </div>
           <div className="text-center mt-10">
             <Link href="/products">
-              <Button variant="outline" className="rounded-full px-8 border-orange-200 text-orange-700">
+              <Button variant="outline" className="rounded-full px-8 border-[1.5px] border-gray-300 text-foreground hover:border-primary hover:text-primary hover:bg-[#F5F3FF]">
                 Browse All Products <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -167,65 +128,43 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ backgroundColor: "#F0F4FF" }}>
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-              Why choose digital value services?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Tap into a marketplace of over 3 billion potential consumers seeking seamless, mobile-first solutions.
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              "Zero regulatory barriers or compliance headaches",
-              "One POC to extend your global Value-added offerings",
-              "Launch micro-value rewards starting as low $0.20",
-            ].map((item, i) => (
-              <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.15 }}
-                className="flex items-start gap-4 p-6 rounded-2xl bg-orange-50/50 border border-orange-100"
-              >
-                <CheckCircle2 className="text-primary mt-0.5 shrink-0" size={20} />
-                <span className="text-foreground font-medium">{item}</span>
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/solutions">
-              <Button variant="outline" className="rounded-full px-8 border-orange-200 text-orange-700">
-                Discover Solutions <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-foreground">
               Purpose-built solutions for every industry
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Explore our client-centric, industry-specific solutions — underpinned by regional expertise and worldwide support.
             </p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {sectors.map((sector, i) => (
-              <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl bg-white border border-border flex items-center gap-4"
+              <motion.div
+                key={i}
+                {...fadeUp}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -4, boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
+                className="rounded-2xl"
+                style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
               >
-                <div className="w-12 h-12 rounded-xl bg-orange-50 text-primary flex items-center justify-center shrink-0">
-                  <sector.icon size={22} />
-                </div>
-                <h3 className="font-display font-bold">{sector.title}</h3>
+                <Link href={sector.href}>
+                  <span
+                    className="p-6 rounded-2xl bg-white border border-border flex items-center gap-4 cursor-pointer transition-colors hover:border-primary/40"
+                    data-testid={`link-sector-${sector.href.split('/').pop()}`}
+                  >
+                    <div className="w-11 h-11 rounded-xl icon-tile-gradient flex items-center justify-center shrink-0">
+                      <sector.icon size={22} />
+                    </div>
+                    <h3 className="font-display font-bold text-foreground">{sector.title}</h3>
+                  </span>
+                </Link>
               </motion.div>
             ))}
           </div>
           <div className="text-center mt-10">
             <Link href="/who-we-serve">
-              <Button className="rounded-full px-8 bg-orange-500 text-white shadow-lg shadow-orange-500/25">
+              <Button className="btn-gradient rounded-full px-8">
                 Who We Serve <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -236,11 +175,11 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div {...fadeUp}>
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-white">
               Activate and grow your customer base
             </h2>
             <Link href="/contact">
-              <Button size="lg" className="rounded-full px-8 bg-orange-500 text-white shadow-lg shadow-orange-500/25" data-testid="button-cta-contact">
+              <Button size="lg" className="btn-gradient rounded-full px-8" data-testid="button-cta-contact">
                 Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>

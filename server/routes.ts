@@ -42,10 +42,26 @@ async function getAllFiles(dir: string, baseDir: string): Promise<{path: string,
   return files;
 }
 
+const industrySlugRedirects: Record<string, string> = {
+  '/who-we-serve/retail-networks': '/who-we-serve/retail-merchants',
+  '/who-we-serve/mobile-operators': '/who-we-serve/telecommunications',
+  '/who-we-serve/money-transfer-operators': '/who-we-serve/forex',
+  '/who-we-serve/creator-economy': '/who-we-serve/gaming',
+};
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  app.get(Object.keys(industrySlugRedirects), (req, res) => {
+    const target = industrySlugRedirects[req.path];
+    if (target) {
+      res.redirect(301, target);
+      return;
+    }
+    res.status(404).end();
+  });
+
   app.post('/api/github/push', async (req, res) => {
     try {
       const { repoName = 'nuovoconnect-website' } = req.body || {};

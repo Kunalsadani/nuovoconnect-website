@@ -7,14 +7,13 @@ import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import Network from "@/pages/Network";
 import WhoWeServe from "@/pages/WhoWeServe";
-import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Banking from "@/pages/Banking";
-import CreatorEconomy from "@/pages/products/CreatorEconomy";
+import Gaming from "@/pages/products/Gaming";
 import SuperApps from "@/pages/products/SuperApps";
-import RetailNetworks from "@/pages/products/RetailNetworks";
-import MobileOperators from "@/pages/products/MobileOperators";
-import MoneyTransferOperators from "@/pages/products/MoneyTransferOperators";
+import RetailMerchants from "@/pages/products/RetailMerchants";
+import Telecommunications from "@/pages/products/Telecommunications";
+import Forex from "@/pages/products/Forex";
 import Ewallets from "@/pages/products/Ewallets";
 import EsimServices from "@/pages/products/EsimServices";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
@@ -27,16 +26,15 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/products" component={Products} />
       <Route path="/who-we-serve/banking" component={Banking} />
-      <Route path="/who-we-serve/creator-economy" component={CreatorEconomy} />
+      <Route path="/who-we-serve/gaming" component={Gaming} />
       <Route path="/who-we-serve/super-apps" component={SuperApps} />
-      <Route path="/who-we-serve/retail-networks" component={RetailNetworks} />
-      <Route path="/who-we-serve/mobile-operators" component={MobileOperators} />
-      <Route path="/who-we-serve/money-transfer-operators" component={MoneyTransferOperators} />
+      <Route path="/who-we-serve/retail-merchants" component={RetailMerchants} />
+      <Route path="/who-we-serve/telecommunications" component={Telecommunications} />
+      <Route path="/who-we-serve/forex" component={Forex} />
       <Route path="/who-we-serve/ewallets" component={Ewallets} />
       <Route path="/who-we-serve/esim-services" component={EsimServices} />
       <Route path="/network" component={Network} />
       <Route path="/who-we-serve" component={WhoWeServe} />
-      <Route path="/solutions" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-and-conditions" component={TermsConditions} />

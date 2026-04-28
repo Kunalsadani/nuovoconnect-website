@@ -6,13 +6,13 @@ import logoImg from "@/assets/nuovoconnect-logo.png";
 
 const industrySubPages = [
   { name: "Overview", href: "/who-we-serve", bold: true },
-  { name: "Retail Networks", href: "/who-we-serve/retail-networks" },
-  { name: "Mobile Operators", href: "/who-we-serve/mobile-operators" },
+  { name: "Retail Merchants", href: "/who-we-serve/retail-merchants" },
+  { name: "Telecommunications", href: "/who-we-serve/telecommunications" },
   { name: "eWallets", href: "/who-we-serve/ewallets" },
   { name: "Relocation Providers", href: "/who-we-serve/banking" },
-  { name: "Money Transfer Operators", href: "/who-we-serve/money-transfer-operators" },
+  { name: "Forex", href: "/who-we-serve/forex" },
   { name: "Super Apps", href: "/who-we-serve/super-apps" },
-  { name: "Creator Economy", href: "/who-we-serve/creator-economy" },
+  { name: "Gaming", href: "/who-we-serve/gaming" },
 ];
 
 export function Navigation() {
@@ -50,7 +50,6 @@ export function Navigation() {
     { name: "Who We Serve", href: "/who-we-serve", hasDropdown: true },
     { name: "Products", href: "/products" },
     { name: "Network", href: "/network" },
-    { name: "Solutions", href: "/solutions" },
   ];
 
   return (
@@ -63,8 +62,20 @@ export function Navigation() {
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between gap-4">
         <Link href="/">
           <div className="flex items-center gap-2 cursor-pointer shrink-0" data-testid="link-home">
-            <img src={logoImg} alt="NuovoConnect" className="w-[36px] h-[36px] object-contain" />
-            <span className="text-[1.6rem] tracking-tight text-foreground" style={{ fontFamily: "'Geist', sans-serif", fontWeight: 900 }}>
+            <img
+              src={logoImg}
+              alt="NuovoConnect"
+              className="w-[36px] h-[36px] object-contain"
+              style={{ filter: "hue-rotate(220deg) saturate(0.95)" }}
+            />
+            <span
+              className="text-[1.9rem] tracking-tight text-foreground"
+              style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontWeight: 800,
+                WebkitTextStroke: "0.5px currentColor",
+              }}
+            >
               NuovoConnect
             </span>
           </div>
@@ -120,7 +131,7 @@ export function Navigation() {
             )
           ))}
           <Link href="/contact">
-            <Button data-testid="button-contact-nav" className="rounded-full px-6 shadow-lg shadow-primary/20">
+            <Button data-testid="button-contact-nav" className="btn-gradient rounded-full px-6">
               Contact Us
             </Button>
           </Link>
@@ -181,7 +192,7 @@ export function Navigation() {
               )
             ))}
             <Link href="/contact">
-              <Button className="w-full mt-2 rounded-full" onClick={() => setMobileMenuOpen(false)}>
+              <Button className="btn-gradient w-full mt-2 rounded-full" onClick={() => setMobileMenuOpen(false)}>
                 Contact Us
               </Button>
             </Link>

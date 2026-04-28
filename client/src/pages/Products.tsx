@@ -5,8 +5,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Smartphone, Gamepad2, Gift, Coins, Users,
-  ScanLine, ArrowRight, Globe2, CheckCircle2, CreditCard, Landmark
+  Globe, Heart, ArrowRight, CheckCircle2, CreditCard, Landmark
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 
@@ -20,14 +19,9 @@ const fadeUp = {
 export default function Products() {
   const products = [
     {
-      icon: Smartphone,
-      name: "Mobile Airtime & Data Recharges",
-      desc: "Facilitate instant mobile airtime and data recharges across 550+ operators in 160+ countries. Real-time processing with complete transaction visibility."
-    },
-    {
-      icon: ScanLine,
-      name: "eSIM Bundles",
-      desc: "Deliver digital SIM solutions for frictionless connectivity. No physical SIM needed — activate instantly through a QR code."
+      icon: Globe,
+      name: "Globally Connectivity",
+      desc: "Keep customers connected worldwide with mobile airtime, data recharges, and eSIM bundles across 550+ operators in 160+ countries."
     },
     {
       icon: Landmark,
@@ -40,30 +34,15 @@ export default function Products() {
       desc: "Process payments across borders with competitive FX rates and real-time settlement. Support for multiple currencies and payment methods."
     },
     {
-      icon: Gift,
-      name: "Brand Vouchers & Gift Cards",
-      desc: "Unlock a broad selection of local and international brand vouchers and gift cards, ideal for rewards and engagement programmes."
-    },
-    {
-      icon: Gamepad2,
-      name: "Gaming Pins",
-      desc: "Distribute prepaid gaming credits and pins for leading gaming platforms. High-demand products that drive engagement."
-    },
-    {
-      icon: Users,
-      name: "Loyalty Programs for Gamers",
-      desc: "Reward and retain gaming audiences with tailored loyalty programmes that drive repeat engagement and long-term value."
-    },
-    {
-      icon: Coins,
-      name: "Crypto Vouchers",
-      desc: "Provide crypto vouchers including Binance Gift Cards, creating a seamless bridge between traditional and digital economies."
+      icon: Heart,
+      name: "Loyalty & Retention Tools",
+      desc: "Drive repeat engagement and long-term value with branded vouchers, gift cards, gaming pins, and tailored loyalty programmes."
     },
   ];
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Products" description="Explore NuovoConnect digital products including mobile airtime, eSIM bundles, brand vouchers, gaming pins, loyalty programs, crypto vouchers, and more." path="/products" />
+      <SEO title="Products" description="Explore NuovoConnect's core offerings: global connectivity, global bank accounts, payment processing, and loyalty & retention tools." path="/products" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
@@ -105,7 +84,7 @@ export default function Products() {
 
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {products.map((product, i) => (
               <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }}>
                 <Card className="h-full border-border hover:border-primary/30 transition-colors">

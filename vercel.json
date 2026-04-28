@@ -2,6 +2,12 @@
   "buildCommand": "npx vite build",
   "outputDirectory": "dist/public",
   "framework": "vite",
+  "redirects": [
+    { "source": "/who-we-serve/retail-networks", "destination": "/who-we-serve/retail-merchants", "permanent": true },
+    { "source": "/who-we-serve/mobile-operators", "destination": "/who-we-serve/telecommunications", "permanent": true },
+    { "source": "/who-we-serve/money-transfer-operators", "destination": "/who-we-serve/forex", "permanent": true },
+    { "source": "/who-we-serve/creator-economy", "destination": "/who-we-serve/gaming", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }

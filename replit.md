@@ -2,7 +2,10 @@
 
 ## Overview
 
-NuovoConnect (formerly NexGenVAS) is a B2B marketing/corporate website for a global digital micropayments platform. The site showcases mobile top-ups, data bundles, gaming pins, utility payments, gift cards, and crypto vouchers. It's a multi-page React application with a contact form that submits inquiries to a PostgreSQL database via an Express API. The brand identity uses a warm orange/amber color palette with the "Outfit" and "Plus Jakarta Sans" font families. Logo font uses Geist Black (weight 900).
+NuovoConnect (formerly NexGenVAS) is a B2B marketing/corporate website for a global digital micropayments platform. The site showcases mobile top-ups, data bundles, gaming pins, utility payments, gift cards, and crypto vouchers. It's a multi-page React application with a contact form that submits inquiries to a PostgreSQL database via an Express API. The brand identity uses a modern fintech palette: purple primary (#7C3AED), deep navy headlines (#0D1B4B), cool light gray background (#F4F4F6), with pastel purple→blue→teal gradient accents. Typography uses Plus Jakarta Sans throughout (logo wordmark uses weight 800). The legacy orange logo PNG is reused with a CSS hue-rotate filter so the brand mark shifts orange→purple while preserving the geometric design.
+
+### Theming notes
+Global shadcn theme tokens in `client/src/index.css` define the new palette. The same file also contains a CSS shim block that re-maps legacy Tailwind utility classes still scattered across pages (`bg-orange-50`, `border-orange-100`, `text-orange-700`, `from-orange-50`, `bg-orange-500`, `bg-gray-900`, `from-gray-900`, `to-gray-800`, `bg-orange-200/80`, etc.) to the new palette so unedited pages pick up the new theme automatically. New code should NOT add new orange/amber utility classes — use the global tokens (`text-primary`, `bg-background`, `text-foreground`, `border-border`) and the `.btn-gradient` and `.icon-tile-gradient` utility classes instead.
 
 **Domain**: www.nuovoconnect.com
 
@@ -14,7 +17,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Frontend
 - **Framework**: React 18 with TypeScript, built with Vite
-- **Routing**: Wouter (lightweight client-side router) with pages: Home, Who We Serve (+ sub-pages under /who-we-serve/*), Products, Network, Solutions (formerly About Us), Contact
+- **Routing**: Wouter (lightweight client-side router) with pages: Home, Who We Serve (+ sub-pages under /who-we-serve/*), Products, Network, Contact
 - **Styling**: Tailwind CSS with CSS variables for theming, using shadcn/ui component library (new-york style)
 - **Animations**: Framer Motion for scroll animations and interactive elements
 - **Forms**: react-hook-form with Zod validation via @hookform/resolvers

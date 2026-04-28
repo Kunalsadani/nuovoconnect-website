@@ -5,9 +5,8 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  ArrowRight, Building2, Smartphone, Wallet,
-  ShoppingCart, Users, Globe2, ScanLine,
-  Layers, Landmark
+  ArrowRight, Wallet, ShoppingCart, ScanLine,
+  Layers, Landmark, Radio, Banknote, Gamepad2
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 
@@ -20,19 +19,19 @@ const fadeUp = {
 
 export default function WhoWeServe() {
   const sectors = [
-    { icon: ShoppingCart, title: "Retail Networks", desc: "Unlock new revenue channels and diversify your portfolio with services tailored for global communities.", href: "/who-we-serve/retail-networks" },
-    { icon: Smartphone, title: "Mobile & e-SIM Providers", desc: "Deliver bespoke data & SIM solutions for frictionless connectivity across borders.", href: "/who-we-serve/mobile-operators" },
+    { icon: ShoppingCart, title: "Retail Merchants", desc: "Unlock new revenue channels and diversify your portfolio with services tailored for global communities.", href: "/who-we-serve/retail-merchants" },
+    { icon: Radio, title: "Telecommunications", desc: "Deliver bespoke data & SIM solutions for frictionless connectivity across borders.", href: "/who-we-serve/telecommunications" },
     { icon: ScanLine, title: "eSIM Services", desc: "Deliver digital SIM solutions for frictionless connectivity across borders without needing physical SIM cards.", href: "/who-we-serve/esim-services" },
     { icon: Landmark, title: "Relocation Providers", desc: "Offer a comprehensive suite of banking and payment capabilities to your customers through a single API.", href: "/who-we-serve/banking" },
     { icon: Wallet, title: "eWallets", desc: "Grow faster and strengthen user retention with frictionless, highly relevant digital offerings.", href: "/who-we-serve/ewallets" },
-    { icon: Building2, title: "Money Transfer Operators", desc: "Deliver cutting-edge cross-border digital products that enhance and complement your core proposition.", href: "/who-we-serve/money-transfer-operators" },
+    { icon: Banknote, title: "Forex", desc: "Deliver cutting-edge cross-border digital products that enhance and complement your core proposition.", href: "/who-we-serve/forex" },
     { icon: Layers, title: "Super Apps", desc: "Expand rapidly and build sustainable value streams that keep your audience engaged and loyal.", href: "/who-we-serve/super-apps" },
-    { icon: Users, title: "Creator Economy", desc: "Accelerate user growth and amplify creator engagement with compelling digital rewards.", href: "/who-we-serve/creator-economy" },
+    { icon: Gamepad2, title: "Gaming", desc: "Accelerate user growth and amplify creator engagement with compelling digital rewards.", href: "/who-we-serve/gaming" },
   ];
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Who We Serve" description="NuovoConnect serves retail networks, mobile operators, eWallets, relocation providers, money transfer operators, super apps, and the creator economy." path="/who-we-serve" />
+      <SEO title="Who We Serve" description="NuovoConnect serves retail merchants, telecommunications, eWallets, relocation providers, forex, super apps, and gaming." path="/who-we-serve" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

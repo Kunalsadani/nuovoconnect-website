@@ -8,10 +8,10 @@ import {
   ArrowRight, CheckCircle2,
   Zap, Globe2, DollarSign, BarChart3
 } from "lucide-react";
-import creatorAcquisitionImg from "@/assets/images/creator-acquisition.png";
-import creatorLoyaltyImg from "@/assets/images/creator-loyalty.png";
-import creatorPayoutsImg from "@/assets/images/creator-payouts.png";
-import creatorRevenueImg from "@/assets/images/creator-revenue.png";
+import gamingAcquisitionImg from "@/assets/images/gaming-acquisition.png";
+import gamingEngagementImg from "@/assets/images/gaming-engagement.png";
+import gamingPayoutsImg from "@/assets/images/gaming-payouts.png";
+import gamingRevenueImg from "@/assets/images/gaming-revenue.png";
 import { SEO } from "@/components/SEO";
 
 const fadeUp = {
@@ -21,24 +21,24 @@ const fadeUp = {
   transition: { duration: 0.6 }
 };
 
-export default function CreatorEconomy() {
+export default function Gaming() {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Creator Economy" description="Supercharge user acquisition and drive engagement with cost-effective digital value services, real-time rewards, and flexible payout options for creators." path="/who-we-serve/creator-economy" />
+      <SEO title="Gaming" description="Help gaming companies and publishers acquire players, boost engagement, reward winners, and grow in-app revenue with cost-effective digital value services and real-time rewards." path="/who-we-serve/gaming" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Creator Economy</span>
-            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight mt-3" data-testid="text-creator-title">
-              Supercharge user acquisition and drive engagement
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Gaming</span>
+            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight mt-3" data-testid="text-gaming-title">
+              Acquire more players, keep them in-game longer
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Attract and retain users with cost-effective, high-impact digital value services. Deliver rewards in real time with a seamless and flexible user experience.
+              Give your gaming studio or publishing platform a single connection to high-impact digital rewards — for player acquisition campaigns, in-game incentives, esports prizes, and faster payouts.
             </p>
             <Link href="/contact">
-              <Button size="lg" className="rounded-full px-8" data-testid="button-creator-contact">
+              <Button size="lg" className="rounded-full px-8" data-testid="button-gaming-contact">
                 Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
@@ -51,9 +51,9 @@ export default function CreatorEconomy() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: Globe2, title: "One connection to access our global network", desc: "Launch new products and mobilise users across 3bn+ potential customers in 170+ countries with a single API integration." },
-              { icon: DollarSign, title: "Highly motivating low-cost solutions", desc: "Our digital value services and rewards have a high-perceived value and proven impact at low cost — acquire customers from as little as $0.10." },
-              { icon: Zap, title: "Fast-to-launch API-led platform", desc: "With a simple API connection you can integrate anywhere and deliver the user journey and trigger point you demand in days — not weeks." },
+              { icon: Globe2, title: "One connection to a global player base", desc: "Run player acquisition and reward campaigns across 170+ countries — from a single API and a single contract." },
+              { icon: DollarSign, title: "High-impact rewards at low CAC", desc: "Mobile top-ups, gift cards, and vouchers carry high perceived value for players — acquire and reactivate from as little as $0.10 each." },
+              { icon: Zap, title: "Built for live ops and game launches", desc: "Trigger rewards from any backend event — install, win, level-up, tournament, or seasonal drop — and deliver them in real time." },
             ].map((item, i) => (
               <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.15 }}>
                 <Card className="h-full border-0 shadow-none bg-orange-50/50">
@@ -76,52 +76,52 @@ export default function CreatorEconomy() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp}>
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-                Scalable & Highly Effective Incentives
+                Scalable Player Acquisition Incentives
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Supercharge your user acquisition</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">Reach new markets easily and drive penetration in key existing markets with personalised promotional campaigns — and acquire customers from as little as $0.10. Engage and incentivize customers with a wide range of mobile top-ups and gift cards across gaming, commerce, and mobile.</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Acquire players from as little as $0.10</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">Run install, sign-up, and re-engagement campaigns in any market with personalised digital rewards your players actually want — from in-game currency top-ups to global gaming and commerce gift cards.</p>
             </motion.div>
             <motion.div {...fadeUp} transition={{ delay: 0.2 }}>
-              <img src={creatorAcquisitionImg} alt="Supercharge user acquisition" className="rounded-3xl w-full object-cover" data-testid="img-creator-acquisition" />
+              <img src={gamingAcquisitionImg} alt="Mobile gamers playing competitive games in a gaming lounge" className="rounded-3xl w-full object-cover" data-testid="img-gaming-acquisition" />
             </motion.div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp} transition={{ delay: 0.2 }}>
-              <img src={creatorLoyaltyImg} alt="Grow user loyalty" className="rounded-3xl w-full object-cover" data-testid="img-creator-loyalty" />
+              <img src={gamingEngagementImg} alt="Engaged gamer celebrating a victory at a desktop gaming setup" className="rounded-3xl w-full object-cover" data-testid="img-gaming-engagement" />
             </motion.div>
             <motion.div {...fadeUp}>
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
                 Relevant & Motivating Rewards
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Grow user loyalty and reduce churn</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">Reduce churn, encourage new feature adoption and bring customers closer by rewarding desired behaviour from a wide selection of loyalty-driving rewards and high-perceived value incentives.</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Boost engagement and reduce player churn</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">Drop in personalised rewards for daily logins, streaks, missions, and feature adoption. High-perceived-value incentives bring lapsed players back and keep your most loyal cohorts active for longer.</p>
             </motion.div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp}>
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-                Accessible Cash-Outs
+                Tournament & Affiliate Payouts
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Offer faster and more flexible payout options</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">Enable long-tail creators to cash out their earnings faster to spend on important day-to-day needs such as top-ups, bill payments, gift cards, food vouchers, and more.</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Pay out winners, streamers, and affiliates instantly</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">Settle esports prize pools, tournament winnings, and affiliate rewards in real time — as gift cards, top-ups, or vouchers in the player's local currency, with full reporting and reconciliation.</p>
             </motion.div>
             <motion.div {...fadeUp} transition={{ delay: 0.2 }}>
-              <img src={creatorPayoutsImg} alt="Flexible payout options" className="rounded-3xl w-full object-cover" data-testid="img-creator-payouts" />
+              <img src={gamingPayoutsImg} alt="Esports tournament winner lifting a trophy on stage with prize pool displayed" className="rounded-3xl w-full object-cover" data-testid="img-gaming-payouts" />
             </motion.div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeUp} transition={{ delay: 0.2 }}>
-              <img src={creatorRevenueImg} alt="Generate revenue and increase usage" className="rounded-3xl w-full object-cover" data-testid="img-creator-revenue" />
+              <img src={gamingRevenueImg} alt="In-game store on a smartphone showing virtual currency, skins, and a data bundle add-on" className="rounded-3xl w-full object-cover" data-testid="img-gaming-revenue" />
             </motion.div>
             <motion.div {...fadeUp}>
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-                In-App Purchase & Data-Based Rewards
+                In-Game Purchases & Connectivity
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Generate revenue and increase daily app usage</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">Cross-sell and upsell data bundles that extend time spent in-app. Sell diverse digital services that increase frequency of visits and traffic. Using non-cash rewards and in-app purchases, you can create an in-app economy that boosts revenue and encourages ongoing usage.</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Grow in-game revenue and daily playtime</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">Cross-sell mobile data bundles that keep mobile players online longer, and bundle gift cards or in-game currency into your store. Build a richer in-game economy that lifts ARPDAU and session frequency.</p>
             </motion.div>
           </div>
         </div>
@@ -130,14 +130,14 @@ export default function CreatorEconomy() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-display font-bold">Why non-cash micropayments?</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-bold">Why non-cash rewards work for gaming</h2>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: CheckCircle2, text: "Avoid the complexity and compliance issues of cash rewards" },
-              { icon: DollarSign, text: "Save costs of cash processing by offering non-cash alternatives in the currency of the user" },
-              { icon: BarChart3, text: "Distribute incentives in real time with full reporting to track conversion" },
-              { icon: Zap, text: "Allow micropayouts from as little as $0.10" },
+              { icon: CheckCircle2, text: "Sidestep the compliance and fraud overhead of cash payouts in-game" },
+              { icon: DollarSign, text: "Reward players in their local currency and language — without FX or processing fees eroding margin" },
+              { icon: BarChart3, text: "Trigger rewards from any backend event in real time, with full reporting on conversion and ROI" },
+              { icon: Zap, text: "Micropayouts from $0.10 unlock incentives across every player segment" },
             ].map((item, i) => (
               <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }}>
                 <Card className="h-full">
@@ -155,7 +155,7 @@ export default function CreatorEconomy() {
       <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Speak to our team today to discuss your requirements
+            See how NuovoConnect helps gaming companies acquire and retain players
           </h2>
           <Link href="/contact">
             <Button size="lg" className="rounded-full px-8 bg-orange-500 text-white border-orange-500 mt-4">
