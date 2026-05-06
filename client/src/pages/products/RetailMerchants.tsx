@@ -23,9 +23,9 @@ const fadeUp = {
 const TOTAL_STEPS = 6;
 
 const SALES_CHANNELS = [
-  "In-store / POS",
-  "Phone or Online Order",
-  "E-commerce / App",
+  "Face to Face",
+  "Mail or Telephone",
+  "Online",
 ];
 
 const REASONS = [
@@ -173,8 +173,8 @@ export default function RetailMerchants() {
   }
 
   const headerText = step === 6
-    ? "Final step. Please fill in your details below so we can get to work securing the best digital product rates for your business. Your details will not be shared."
-    : "Complete this short form and get the most competitive quotes from NuovoConnect's global digital products network.";
+    ? "Final step. Please fill in your details below so we can get to work securing the best bespoke rates for your business from our network of 90% of the UK's leading card payment processors. Your details will not be shared."
+    : "Complete this short form and get the most competitive quotes from the UK's leading FCA regulated card processing providers";
 
   return (
     <div className="min-h-screen bg-background">
@@ -192,18 +192,18 @@ export default function RetailMerchants() {
 
             {/* LEFT */}
             <motion.div {...fadeUp}>
-              <p className="text-sm text-foreground/60 mb-4">Digital Products for Retail</p>
+              <p className="text-sm text-foreground/60 mb-4">Payment Processing Quotes</p>
               <h1
                 className="text-4xl md:text-5xl lg:text-[3.25rem] font-display font-extrabold leading-[1.1] text-foreground mb-8"
                 data-testid="text-retail-title"
               >
-                Compare digital product rates from multiple trusted global suppliers
+                Compare preferential card processing fees from multiple trusted payment processors
               </h1>
               <ul className="space-y-5">
                 {[
-                  "Receive preferential rates from NuovoConnect's vetted supplier network",
-                  "Compare multiple digital product providers from a single source",
-                  "Dedicated support throughout your agreement and beyond",
+                  "Receive preferential rates from trusted payment processors",
+                  "Compare multiple merchant service providers from a single source",
+                  "Back up support throughout the agreement with the provider you choose",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
@@ -237,7 +237,7 @@ export default function RetailMerchants() {
                         className="flex flex-col flex-1 gap-4"
                       >
                         <p className="text-center text-sm font-semibold text-foreground mb-2">
-                          Do you currently sell digital products?
+                          Do you currently take card payments?
                         </p>
                         <div className="space-y-2">
                           {["Yes", "No"].map(opt => (
@@ -273,7 +273,7 @@ export default function RetailMerchants() {
                         className="flex flex-col flex-1"
                       >
                         <p className="text-center text-sm font-semibold text-foreground mb-2">
-                          How do you want to sell digital products?
+                          How do you want to take card payments?
                         </p>
                         <div className="space-y-1.5 flex-1">
                           {SALES_CHANNELS.map(p => (
@@ -336,7 +336,7 @@ export default function RetailMerchants() {
                         className="flex flex-col flex-1"
                       >
                         <p className="text-center text-sm font-semibold text-foreground mb-2">
-                          How much do you typically spend on digital products{" "}
+                          How much do you typically process by card{" "}
                           <strong>per month</strong>?
                         </p>
                         <div className="grid grid-cols-2 gap-1.5 flex-1">
@@ -381,7 +381,7 @@ export default function RetailMerchants() {
                         className="flex flex-col flex-1"
                       >
                         <p className="text-sm font-semibold text-foreground mb-2">
-                          Who is your current digital products supplier?
+                          Who is your current provider?
                         </p>
                         <select
                           data-testid="select-supplier"
@@ -397,7 +397,7 @@ export default function RetailMerchants() {
 
                         <div className="mt-4 border border-dashed border-border rounded-lg p-4 text-center">
                           <p className="text-xs font-semibold text-foreground mb-1">
-                            Recent Digital Products Statement (Optional)
+                            Recent Card Processing Statement (Optional)
                           </p>
                           <label
                             htmlFor="statement-upload"
@@ -419,7 +419,7 @@ export default function RetailMerchants() {
                           </label>
                         </div>
                         <p className="text-xs text-muted-foreground text-center mt-2">
-                          Uploading a statement is optional but helps us provide a more accurate proposal.
+                          Uploading a card statement is optional at this stage but it will enable us to get you accurate quotes much quicker.
                         </p>
 
                         <Button
@@ -440,12 +440,12 @@ export default function RetailMerchants() {
                         exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
                         className="flex flex-col flex-1"
                       >
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className="grid grid-cols-2 gap-2.5">
                           {([
                             { key: "firstName", placeholder: "First name", testId: "input-first-name" },
                             { key: "lastName", placeholder: "Last name", testId: "input-last-name" },
                             { key: "company", placeholder: "Company Name", testId: "input-company" },
-                            { key: "country", placeholder: "Country", testId: "input-country" },
+                            { key: "country", placeholder: "Postcode", testId: "input-postcode" },
                           ] as const).map(f => (
                             <div key={f.key}>
                               <Input
@@ -465,29 +465,37 @@ export default function RetailMerchants() {
                           ))}
                         </div>
 
-                        <div className="mt-3 space-y-3">
-                          {([
-                            { key: "email", placeholder: "Email", type: "email", testId: "input-email", hint: "Where you'd like the proposal to be sent." },
-                            { key: "phone", placeholder: "Phone", type: "tel", testId: "input-phone", hint: "We'll only call to confirm your requirements." },
-                          ] as const).map(f => (
-                            <div key={f.key}>
-                              <Input
-                                type={f.type}
-                                placeholder={f.placeholder}
-                                data-testid={f.testId}
-                                value={formData[f.key]}
-                                onChange={e => {
-                                  setFormData(prev => ({ ...prev, [f.key]: e.target.value }));
-                                  if (errors[f.key]) setErrors(prev => ({ ...prev, [f.key]: "" }));
-                                }}
-                                className={`h-10 text-sm ${errors[f.key] ? "border-destructive" : ""}`}
-                              />
-                              <p className="text-xs text-muted-foreground mt-0.5">{f.hint}</p>
-                              {errors[f.key] && (
-                                <p className="text-xs text-destructive">{errors[f.key]}</p>
-                              )}
-                            </div>
-                          ))}
+                        <div className="mt-2.5 space-y-2.5">
+                          <div>
+                            <Input
+                              type="email"
+                              placeholder="Email"
+                              data-testid="input-email"
+                              value={formData.email}
+                              onChange={e => {
+                                setFormData(prev => ({ ...prev, email: e.target.value }));
+                                if (errors.email) setErrors(prev => ({ ...prev, email: "" }));
+                              }}
+                              className={`h-10 text-sm ${errors.email ? "border-destructive" : ""}`}
+                            />
+                            <p className="text-xs text-muted-foreground mt-0.5">Where you'd like the bespoke quotes to be sent.</p>
+                            {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
+                          </div>
+                          <div>
+                            <Input
+                              type="tel"
+                              placeholder="Phone"
+                              data-testid="input-phone"
+                              value={formData.phone}
+                              onChange={e => {
+                                setFormData(prev => ({ ...prev, phone: e.target.value }));
+                                if (errors.phone) setErrors(prev => ({ ...prev, phone: "" }));
+                              }}
+                              className={`h-10 text-sm ${errors.phone ? "border-destructive" : ""}`}
+                            />
+                            <p className="text-xs text-muted-foreground mt-0.5">Your contact details will not be shared. You will only be called by one of our payment experts to confirm your requirements, answer any questions you have and give indicative rates before quotes are emailed.</p>
+                            {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
+                          </div>
                         </div>
 
                         {errors.submit && (
@@ -495,7 +503,7 @@ export default function RetailMerchants() {
                         )}
 
                         <Button
-                          className="mt-5 w-full rounded-lg btn-gradient"
+                          className="mt-4 w-full rounded-lg btn-gradient"
                           data-testid="button-submit"
                           onClick={handleSubmit}
                           disabled={isPending}
