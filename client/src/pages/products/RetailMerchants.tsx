@@ -1,12 +1,14 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import {
   ArrowRight, CheckCircle2, Globe2, Smartphone,
-  Gift, ScanLine, Zap, Users
+  Gift, ScanLine, Zap, Users, Check, ArrowLeft, CheckCheck, Lock
 } from "lucide-react";
 import retailHeroImg from "@/assets/images/retail-merchant-hero.png";
 import { SEO } from "@/components/SEO";
@@ -15,34 +17,562 @@ const fadeUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
+const TOTAL_STEPS = 6;
+
+const PRODUCTS = [
+  "Mobile Top-ups",
+  "Data Bundles",
+  "Gift Cards",
+  "Gaming Pins",
+  "eSIMs",
+  "Utility Payments",
+];
+
+const REASONS = [
+  "Want to increase revenue",
+  "Expand product range",
+  "Driven by customer demand",
+  "Starting a new venture",
+];
+
+const MONTHLY_SPENDS = [
+  "Under $2K", "$2K – $5K",
+  "$5K – $10K", "$10K – $20K",
+  "$20K – $50K", "$50K – $250K",
+  "$250K – $1M", "Over $1M",
+];
+
+const SUPPLIERS = [
+  "No current supplier",
+  "Comviva",
+  "DITO",
+  "Ding",
+  "Ezetop",
+  "Pareteum",
+  "Other",
+];
+
+type Step = 1 | 2 | 3 | 4 | 5 | 6 | "success";
+
+function RadioOption({
+  label, selected, onClick, testId,
+}: { label: string; selected: boolean; onClick: () => void; testId?: string }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      data-testid={testId}
+      className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-lg border text-sm font-medium transition-all text-left ${
+        selected
+          ? "border-primary bg-primary/5 text-primary"
+          : "border-border text-foreground hover:border-primary/40"
+      }`}
+    >
+      <span className={`w-4 h-4 flex-shrink-0 rounded-full border-2 flex items-center justify-center transition-colors ${
+        selected ? "border-primary" : "border-muted-foreground/40"
+      }`}>
+        {selected && <span className="w-2 h-2 rounded-full bg-primary" />}
+      </span>
+      {label}
+    </button>
+  );
+}
+
+function CheckboxOption({
+  label, checked, onClick, testId,
+}: { label: string; checked: boolean; onClick: () => void; testId?: string }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      data-testid={testId}
+      className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-lg border text-sm font-medium transition-all text-left ${
+        checked
+          ? "border-primary bg-primary/5 text-primary"
+          : "border-border text-foreground hover:border-primary/40"
+      }`}
+    >
+      <span className={`w-4 h-4 flex-shrink-0 rounded border flex items-center justify-center transition-colors ${
+        checked ? "bg-primary border-primary" : "border-muted-foreground/40"
+      }`}>
+        {checked && <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />}
+      </span>
+      {label}
+    </button>
+  );
+}
+
 export default function RetailMerchants() {
+  const [step, setStep] = useState<Step>(1);
+  const [currentlySells, setCurrentlySells] = useState("");
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+  const [reason, setReason] = useState("");
+  const [monthlySpend, setMonthlySpend] = useState("");
+  const [supplier, setSupplier] = useState("");
+  const [formData, setFormData] = useState({
+    firstName: "", lastName: "", company: "", country: "", email: "", phone: "",
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isPending, setIsPending] = useState(false);
+
+  const stepNum = step === "success" ? TOTAL_STEPS : (step as number);
+
+  function goBack() {
+    if (typeof step === "number" && step > 1) setStep((step - 1) as Step);
+  }
+
+  function toggleProduct(p: string) {
+    setSelectedProducts(prev =>
+      prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]
+    );
+  }
+
+  function validateFinal() {
+    const e: Record<string, string> = {};
+    if (!formData.firstName.trim()) e.firstName = "Required";
+    if (!formData.lastName.trim()) e.lastName = "Required";
+    if (!formData.company.trim()) e.company = "Required";
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) e.email = "Valid email required";
+    if (!formData.phone.trim()) e.phone = "Required";
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  }
+
+  async function handleSubmit() {
+    if (!validateFinal()) return;
+    setIsPending(true);
+    try {
+      const message = [
+        `Currently sells digital products: ${currentlySells || "Not specified"}`,
+        `Products of interest: ${selectedProducts.length ? selectedProducts.join(", ") : "Not specified"}`,
+        `Reason: ${reason || "Not specified"}`,
+        `Monthly spend: ${monthlySpend || "Not specified"}`,
+        `Current supplier: ${supplier || "Not specified"}`,
+        `Country: ${formData.country}`,
+        `Phone: ${formData.phone}`,
+        `Source: Retail Merchants lead form`,
+      ].join("\n");
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          email: formData.email,
+          company: formData.company,
+          message,
+        }),
+      });
+      if (!res.ok) throw new Error("Submission failed");
+      setStep("success");
+    } catch {
+      setErrors({ submit: "Something went wrong. Please try again." });
+    } finally {
+      setIsPending(false);
+    }
+  }
+
+  const headerText = step === 6
+    ? "Final step. Please fill in your details so we can get you the best digital product rates for your business. Your details will not be shared."
+    : "Complete this short form and get the most competitive quotes from NuovoConnect's global digital products network.";
+
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Retail Merchants" description="Help your retail merchants grow basket size and footfall with digital airtime, data bundles, gift cards, and prepaid vouchers across 170+ countries." path="/who-we-serve/retail-merchants" />
+      <SEO
+        title="Retail Merchants"
+        description="Help your retail merchants grow basket size and footfall with digital airtime, data bundles, gift cards, and prepaid vouchers across 170+ countries."
+        path="/who-we-serve/retail-merchants"
+      />
       <Navigation />
 
-      <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Retail Merchants</span>
-            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight mt-3" data-testid="text-retail-title">
-              Bigger baskets, more footfall, happier shoppers
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Give your stores and online checkouts a single connection to high-demand digital top-ups, vouchers, and gift cards — and turn every transaction into recurring revenue.
-            </p>
-            <Link href="/contact">
-              <Button size="lg" className="rounded-full px-8" data-testid="button-retail-contact">
-                Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-          </motion.div>
+      {/* ── HERO: two-column with multi-step lead form ── */}
+      <section className="relative pt-28 pb-20 lg:pt-36 lg:pb-28 bg-background overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            {/* LEFT */}
+            <motion.div {...fadeUp}>
+              <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+                Retail Merchants
+              </span>
+              <h1
+                className="text-4xl md:text-5xl font-display font-bold mt-3 mb-6 leading-tight"
+                data-testid="text-retail-title"
+              >
+                Grow basket size and revenue with digital products at the till
+              </h1>
+              <ul className="space-y-4">
+                {[
+                  "Connect your stores to 170+ countries of digital top-ups and vouchers",
+                  "One integration across POS, e-commerce, and mobile checkouts",
+                  "Real-time fulfilment — no stock, no shrinkage, no logistics",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Check className="w-3 h-3 text-primary" strokeWidth={3} />
+                    </span>
+                    <span className="text-muted-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* RIGHT — form card */}
+            <motion.div {...fadeUp} transition={{ delay: 0.15 }}>
+              <div className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(13,27,75,0.12)] bg-white">
+
+                {/* Dark header */}
+                <div className="bg-[#0D1B4B] px-6 py-5 text-center">
+                  <p className="text-white/90 text-sm leading-snug max-w-xs mx-auto">
+                    {headerText}
+                  </p>
+                </div>
+
+                {/* Form body */}
+                <div className="px-6 py-7 flex flex-col min-h-[380px]">
+                  <AnimatePresence mode="wait">
+
+                    {/* ── Step 1: Currently sell? ── */}
+                    {step === 1 && (
+                      <motion.div
+                        key="s1"
+                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
+                        className="flex flex-col flex-1 gap-4"
+                      >
+                        <p className="text-center text-sm font-semibold text-foreground mb-1">
+                          Do you currently sell digital products?
+                        </p>
+                        <div className="space-y-2.5">
+                          {["Yes", "No"].map(opt => (
+                            <RadioOption
+                              key={opt} label={opt}
+                              selected={currentlySells === opt}
+                              onClick={() => setCurrentlySells(opt)}
+                              testId={`radio-currently-${opt.toLowerCase()}`}
+                            />
+                          ))}
+                        </div>
+                        <Button
+                          className="mt-2 w-full rounded-lg btn-gradient"
+                          data-testid="button-step1-continue"
+                          onClick={() => currentlySells && setStep(2)}
+                          disabled={!currentlySells}
+                        >
+                          Get Started <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                        <p className="flex items-start gap-2 text-xs text-muted-foreground mt-1">
+                          <Lock className="w-3 h-3 mt-0.5 flex-shrink-0" />
+                          You'll only deal with us. We are not a lead generation company. No multiple sales agents. No call centres. No referring your details.
+                        </p>
+                      </motion.div>
+                    )}
+
+                    {/* ── Step 2: Products ── */}
+                    {step === 2 && (
+                      <motion.div
+                        key="s2"
+                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
+                        className="flex flex-col flex-1"
+                      >
+                        <p className="text-center text-sm font-semibold text-foreground mb-4">
+                          What digital products do you want to offer?
+                        </p>
+                        <div className="space-y-2 flex-1">
+                          {PRODUCTS.map(p => (
+                            <CheckboxOption
+                              key={p} label={p}
+                              checked={selectedProducts.includes(p)}
+                              onClick={() => toggleProduct(p)}
+                              testId={`checkbox-${p.replace(/\s+/g, "-").toLowerCase()}`}
+                            />
+                          ))}
+                        </div>
+                        <Button
+                          className="mt-5 w-full rounded-lg btn-gradient"
+                          data-testid="button-step2-continue"
+                          onClick={() => setStep(3)}
+                        >
+                          Continue <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </motion.div>
+                    )}
+
+                    {/* ── Step 3: Reason ── */}
+                    {step === 3 && (
+                      <motion.div
+                        key="s3"
+                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
+                        className="flex flex-col flex-1"
+                      >
+                        <p className="text-center text-sm font-semibold text-foreground mb-4">
+                          What's the main reason you want to add digital products?
+                        </p>
+                        <div className="space-y-2.5 flex-1">
+                          {REASONS.map(r => (
+                            <RadioOption
+                              key={r} label={r}
+                              selected={reason === r}
+                              onClick={() => setReason(r)}
+                              testId={`radio-reason-${r.replace(/\s+/g, "-").toLowerCase()}`}
+                            />
+                          ))}
+                        </div>
+                        <Button
+                          className="mt-5 w-full rounded-lg btn-gradient"
+                          data-testid="button-step3-continue"
+                          onClick={() => reason && setStep(4)}
+                          disabled={!reason}
+                        >
+                          Continue <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </motion.div>
+                    )}
+
+                    {/* ── Step 4: Monthly spend ── */}
+                    {step === 4 && (
+                      <motion.div
+                        key="s4"
+                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
+                        className="flex flex-col flex-1"
+                      >
+                        <p className="text-center text-sm font-semibold text-foreground mb-4">
+                          How much do you typically spend on digital products{" "}
+                          <strong>per month</strong>?
+                        </p>
+                        <div className="grid grid-cols-2 gap-2 flex-1">
+                          {MONTHLY_SPENDS.map(s => (
+                            <button
+                              key={s}
+                              type="button"
+                              onClick={() => setMonthlySpend(s)}
+                              data-testid={`radio-spend-${s.replace(/[\s$–]/g, "-").toLowerCase()}`}
+                              className={`flex items-center gap-2.5 px-3 py-3 rounded-lg border text-sm font-medium transition-all text-left ${
+                                monthlySpend === s
+                                  ? "border-primary bg-primary/5 text-primary"
+                                  : "border-border text-foreground hover:border-primary/40"
+                              }`}
+                            >
+                              <span className={`w-4 h-4 flex-shrink-0 rounded-full border-2 flex items-center justify-center ${
+                                monthlySpend === s ? "border-primary" : "border-muted-foreground/40"
+                              }`}>
+                                {monthlySpend === s && <span className="w-2 h-2 rounded-full bg-primary" />}
+                              </span>
+                              {s}
+                            </button>
+                          ))}
+                        </div>
+                        <Button
+                          className="mt-5 w-full rounded-lg btn-gradient"
+                          data-testid="button-step4-continue"
+                          onClick={() => monthlySpend && setStep(5)}
+                          disabled={!monthlySpend}
+                        >
+                          Continue <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </motion.div>
+                    )}
+
+                    {/* ── Step 5: Current supplier ── */}
+                    {step === 5 && (
+                      <motion.div
+                        key="s5"
+                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
+                        className="flex flex-col flex-1"
+                      >
+                        <p className="text-sm font-semibold text-foreground mb-3">
+                          Who is your current digital products supplier?
+                        </p>
+                        <select
+                          data-testid="select-supplier"
+                          value={supplier}
+                          onChange={e => setSupplier(e.target.value)}
+                          className="w-full border border-border rounded-lg px-4 py-3 text-sm text-foreground bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none"
+                        >
+                          <option value="">Please select an option</option>
+                          {SUPPLIERS.map(s => (
+                            <option key={s} value={s}>{s}</option>
+                          ))}
+                        </select>
+
+                        <div className="mt-6 border border-dashed border-border rounded-lg p-5 text-center">
+                          <p className="text-xs font-semibold text-foreground mb-1">
+                            Recent Digital Products Statement (Optional)
+                          </p>
+                          <label
+                            htmlFor="statement-upload"
+                            className="cursor-pointer block mt-2"
+                          >
+                            <span className="text-sm font-semibold text-primary">
+                              Click here to upload your statement
+                            </span>
+                            <span className="block text-xs text-muted-foreground mt-1">
+                              Accepts png, jpeg, pdf
+                            </span>
+                            <input
+                              id="statement-upload"
+                              type="file"
+                              accept=".png,.jpg,.jpeg,.pdf"
+                              className="hidden"
+                              data-testid="input-statement-upload"
+                            />
+                          </label>
+                        </div>
+                        <p className="text-xs text-muted-foreground text-center mt-3">
+                          Uploading a statement is optional but helps us provide a more accurate proposal.
+                        </p>
+
+                        <Button
+                          className="mt-5 w-full rounded-lg btn-gradient"
+                          data-testid="button-step5-continue"
+                          onClick={() => setStep(6)}
+                        >
+                          Continue <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </motion.div>
+                    )}
+
+                    {/* ── Step 6: Contact details ── */}
+                    {step === 6 && (
+                      <motion.div
+                        key="s6"
+                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
+                        className="flex flex-col flex-1"
+                      >
+                        <div className="grid grid-cols-2 gap-3">
+                          {([
+                            { key: "firstName", placeholder: "First name", testId: "input-first-name" },
+                            { key: "lastName", placeholder: "Last name", testId: "input-last-name" },
+                            { key: "company", placeholder: "Company Name", testId: "input-company" },
+                            { key: "country", placeholder: "Country", testId: "input-country" },
+                          ] as const).map(f => (
+                            <div key={f.key}>
+                              <Input
+                                placeholder={f.placeholder}
+                                data-testid={f.testId}
+                                value={formData[f.key]}
+                                onChange={e => {
+                                  setFormData(prev => ({ ...prev, [f.key]: e.target.value }));
+                                  if (errors[f.key]) setErrors(prev => ({ ...prev, [f.key]: "" }));
+                                }}
+                                className={`h-10 text-sm ${errors[f.key] ? "border-destructive" : ""}`}
+                              />
+                              {errors[f.key] && (
+                                <p className="text-xs text-destructive mt-0.5">{errors[f.key]}</p>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="mt-3 space-y-3">
+                          {([
+                            { key: "email", placeholder: "Email", type: "email", testId: "input-email", hint: "Where you'd like the proposal to be sent." },
+                            { key: "phone", placeholder: "Phone", type: "tel", testId: "input-phone", hint: "We'll only call to confirm your requirements." },
+                          ] as const).map(f => (
+                            <div key={f.key}>
+                              <Input
+                                type={f.type}
+                                placeholder={f.placeholder}
+                                data-testid={f.testId}
+                                value={formData[f.key]}
+                                onChange={e => {
+                                  setFormData(prev => ({ ...prev, [f.key]: e.target.value }));
+                                  if (errors[f.key]) setErrors(prev => ({ ...prev, [f.key]: "" }));
+                                }}
+                                className={`h-10 text-sm ${errors[f.key] ? "border-destructive" : ""}`}
+                              />
+                              <p className="text-xs text-muted-foreground mt-0.5">{f.hint}</p>
+                              {errors[f.key] && (
+                                <p className="text-xs text-destructive">{errors[f.key]}</p>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+
+                        {errors.submit && (
+                          <p className="text-xs text-destructive mt-2">{errors.submit}</p>
+                        )}
+
+                        <Button
+                          className="mt-5 w-full rounded-lg btn-gradient"
+                          data-testid="button-submit"
+                          onClick={handleSubmit}
+                          disabled={isPending}
+                        >
+                          {isPending ? "Sending…" : "Get Quotes"} <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </motion.div>
+                    )}
+
+                    {/* ── Success ── */}
+                    {step === "success" && (
+                      <motion.div
+                        key="success"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex flex-col items-center justify-center flex-1 text-center py-6"
+                      >
+                        <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                          <CheckCheck className="w-7 h-7 text-primary" />
+                        </div>
+                        <h3 className="font-display font-bold text-lg text-foreground mb-2">
+                          You're all set!
+                        </h3>
+                        <p className="text-sm text-muted-foreground max-w-xs">
+                          A NuovoConnect specialist will reach out within one business day with a tailored digital products proposal.
+                        </p>
+                      </motion.div>
+                    )}
+
+                  </AnimatePresence>
+
+                  {/* Back + progress dots */}
+                  {step !== "success" && (
+                    <div className="mt-4 flex items-center justify-between">
+                      <button
+                        type="button"
+                        onClick={goBack}
+                        data-testid="button-back"
+                        className={`flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors ${
+                          step === 1 ? "invisible" : ""
+                        }`}
+                      >
+                        <ArrowLeft className="w-3 h-3" /> Back
+                      </button>
+                      <div className="flex items-center gap-1.5">
+                        {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
+                          <span
+                            key={i}
+                            className={`rounded-full transition-all ${
+                              i + 1 === stepNum
+                                ? "w-4 h-1.5 bg-primary"
+                                : i + 1 < stepNum
+                                ? "w-1.5 h-1.5 bg-primary/40"
+                                : "w-1.5 h-1.5 bg-border"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange-50 to-transparent -z-10" />
       </section>
+
+      {/* ── rest of the page unchanged ── */}
 
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
@@ -53,7 +583,7 @@ export default function RetailMerchants() {
               { icon: Users, title: "One connection across every sales channel", desc: "Plug the same catalogue into POS, e-commerce, mobile apps, and loyalty programs — and tailor the experience for each." },
             ].map((item, i) => (
               <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.15 }}>
-                <Card className="h-full border-0 shadow-none bg-orange-50/50">
+                <Card className="h-full border-0 shadow-none bg-secondary/60">
                   <CardContent className="p-8">
                     <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6">
                       <item.icon size={28} />
@@ -133,7 +663,11 @@ export default function RetailMerchants() {
               </div>
             </motion.div>
             <motion.div {...fadeUp} transition={{ delay: 0.2 }}>
-              <img src={retailHeroImg} alt="Retail merchant serving a shopper at the counter" className="rounded-3xl aspect-[4/3] object-cover w-full" />
+              <img
+                src={retailHeroImg}
+                alt="Retail merchant serving a shopper at the counter"
+                className="rounded-3xl aspect-[4/3] object-cover w-full"
+              />
             </motion.div>
           </div>
         </div>
