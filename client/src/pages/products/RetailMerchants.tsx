@@ -65,7 +65,7 @@ function RadioOption({
       type="button"
       onClick={onClick}
       data-testid={testId}
-      className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-lg border text-sm font-medium transition-all text-left ${
+      className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg border text-sm font-medium transition-all text-left ${
         selected
           ? "border-primary bg-primary/5 text-primary"
           : "border-border text-foreground hover:border-primary/40"
@@ -89,7 +89,7 @@ function CheckboxOption({
       type="button"
       onClick={onClick}
       data-testid={testId}
-      className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-lg border text-sm font-medium transition-all text-left ${
+      className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg border text-sm font-medium transition-all text-left ${
         checked
           ? "border-primary bg-primary/5 text-primary"
           : "border-border text-foreground hover:border-primary/40"
@@ -195,26 +195,22 @@ export default function RetailMerchants() {
 
             {/* LEFT */}
             <motion.div {...fadeUp}>
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider">
-                Retail Merchants
-              </span>
+              <p className="text-sm text-foreground/60 mb-4">Digital Products for Retail</p>
               <h1
-                className="text-4xl md:text-5xl font-display font-bold mt-3 mb-6 leading-tight"
+                className="text-4xl md:text-5xl lg:text-[3.25rem] font-display font-extrabold leading-[1.1] text-foreground mb-8"
                 data-testid="text-retail-title"
               >
-                Grow basket size and revenue with digital products at the till
+                Compare digital product rates from multiple trusted global suppliers
               </h1>
-              <ul className="space-y-4">
+              <ul className="space-y-5">
                 {[
-                  "Connect your stores to 170+ countries of digital top-ups and vouchers",
-                  "One integration across POS, e-commerce, and mobile checkouts",
-                  "Real-time fulfilment — no stock, no shrinkage, no logistics",
+                  "Receive preferential rates from NuovoConnect's vetted supplier network",
+                  "Compare multiple digital product providers from a single source",
+                  "Dedicated support throughout your agreement and beyond",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-primary" strokeWidth={3} />
-                    </span>
-                    <span className="text-muted-foreground">{item}</span>
+                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    <span className="text-foreground/80 text-base">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -225,14 +221,14 @@ export default function RetailMerchants() {
               <div className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(13,27,75,0.12)] bg-white">
 
                 {/* Dark header */}
-                <div className="bg-[#0D1B4B] px-6 py-5 text-center">
+                <div className="bg-[#0D1B4B] px-5 py-4 text-center">
                   <p className="text-white/90 text-sm leading-snug max-w-xs mx-auto">
                     {headerText}
                   </p>
                 </div>
 
                 {/* Form body */}
-                <div className="px-6 py-7 flex flex-col min-h-[380px]">
+                <div className="px-5 py-5 flex flex-col min-h-[340px]">
                   <AnimatePresence mode="wait">
 
                     {/* ── Step 1: Currently sell? ── */}
@@ -243,10 +239,10 @@ export default function RetailMerchants() {
                         exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
                         className="flex flex-col flex-1 gap-4"
                       >
-                        <p className="text-center text-sm font-semibold text-foreground mb-1">
+                        <p className="text-center text-sm font-semibold text-foreground mb-2">
                           Do you currently sell digital products?
                         </p>
-                        <div className="space-y-2.5">
+                        <div className="space-y-2">
                           {["Yes", "No"].map(opt => (
                             <RadioOption
                               key={opt} label={opt}
@@ -257,14 +253,14 @@ export default function RetailMerchants() {
                           ))}
                         </div>
                         <Button
-                          className="mt-2 w-full rounded-lg btn-gradient"
+                          className="mt-3 w-full rounded-lg btn-gradient"
                           data-testid="button-step1-continue"
                           onClick={() => currentlySells && setStep(2)}
                           disabled={!currentlySells}
                         >
                           Get Started <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>
-                        <p className="flex items-start gap-2 text-xs text-muted-foreground mt-1">
+                        <p className="flex items-start gap-2 text-xs text-muted-foreground mt-2">
                           <Lock className="w-3 h-3 mt-0.5 flex-shrink-0" />
                           You'll only deal with us. We are not a lead generation company. No multiple sales agents. No call centres. No referring your details.
                         </p>
@@ -279,10 +275,10 @@ export default function RetailMerchants() {
                         exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
                         className="flex flex-col flex-1"
                       >
-                        <p className="text-center text-sm font-semibold text-foreground mb-4">
+                        <p className="text-center text-sm font-semibold text-foreground mb-2">
                           What digital products do you want to offer?
                         </p>
-                        <div className="space-y-2 flex-1">
+                        <div className="space-y-1.5 flex-1">
                           {PRODUCTS.map(p => (
                             <CheckboxOption
                               key={p} label={p}
@@ -293,7 +289,7 @@ export default function RetailMerchants() {
                           ))}
                         </div>
                         <Button
-                          className="mt-5 w-full rounded-lg btn-gradient"
+                          className="mt-3 w-full rounded-lg btn-gradient"
                           data-testid="button-step2-continue"
                           onClick={() => setStep(3)}
                         >
@@ -310,10 +306,10 @@ export default function RetailMerchants() {
                         exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
                         className="flex flex-col flex-1"
                       >
-                        <p className="text-center text-sm font-semibold text-foreground mb-4">
+                        <p className="text-center text-sm font-semibold text-foreground mb-2">
                           What's the main reason you want to add digital products?
                         </p>
-                        <div className="space-y-2.5 flex-1">
+                        <div className="space-y-1.5 flex-1">
                           {REASONS.map(r => (
                             <RadioOption
                               key={r} label={r}
@@ -324,7 +320,7 @@ export default function RetailMerchants() {
                           ))}
                         </div>
                         <Button
-                          className="mt-5 w-full rounded-lg btn-gradient"
+                          className="mt-3 w-full rounded-lg btn-gradient"
                           data-testid="button-step3-continue"
                           onClick={() => reason && setStep(4)}
                           disabled={!reason}
@@ -342,18 +338,18 @@ export default function RetailMerchants() {
                         exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
                         className="flex flex-col flex-1"
                       >
-                        <p className="text-center text-sm font-semibold text-foreground mb-4">
+                        <p className="text-center text-sm font-semibold text-foreground mb-2">
                           How much do you typically spend on digital products{" "}
                           <strong>per month</strong>?
                         </p>
-                        <div className="grid grid-cols-2 gap-2 flex-1">
+                        <div className="grid grid-cols-2 gap-1.5 flex-1">
                           {MONTHLY_SPENDS.map(s => (
                             <button
                               key={s}
                               type="button"
                               onClick={() => setMonthlySpend(s)}
                               data-testid={`radio-spend-${s.replace(/[\s$–]/g, "-").toLowerCase()}`}
-                              className={`flex items-center gap-2.5 px-3 py-3 rounded-lg border text-sm font-medium transition-all text-left ${
+                              className={`flex items-center gap-2 px-3 py-2.5 rounded-lg border text-sm font-medium transition-all text-left ${
                                 monthlySpend === s
                                   ? "border-primary bg-primary/5 text-primary"
                                   : "border-border text-foreground hover:border-primary/40"
@@ -369,7 +365,7 @@ export default function RetailMerchants() {
                           ))}
                         </div>
                         <Button
-                          className="mt-5 w-full rounded-lg btn-gradient"
+                          className="mt-3 w-full rounded-lg btn-gradient"
                           data-testid="button-step4-continue"
                           onClick={() => monthlySpend && setStep(5)}
                           disabled={!monthlySpend}
@@ -387,14 +383,14 @@ export default function RetailMerchants() {
                         exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
                         className="flex flex-col flex-1"
                       >
-                        <p className="text-sm font-semibold text-foreground mb-3">
+                        <p className="text-sm font-semibold text-foreground mb-2">
                           Who is your current digital products supplier?
                         </p>
                         <select
                           data-testid="select-supplier"
                           value={supplier}
                           onChange={e => setSupplier(e.target.value)}
-                          className="w-full border border-border rounded-lg px-4 py-3 text-sm text-foreground bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none"
+                          className="w-full border border-border rounded-lg px-3.5 py-2.5 text-sm text-foreground bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none"
                         >
                           <option value="">Please select an option</option>
                           {SUPPLIERS.map(s => (
@@ -402,18 +398,18 @@ export default function RetailMerchants() {
                           ))}
                         </select>
 
-                        <div className="mt-6 border border-dashed border-border rounded-lg p-5 text-center">
+                        <div className="mt-4 border border-dashed border-border rounded-lg p-4 text-center">
                           <p className="text-xs font-semibold text-foreground mb-1">
                             Recent Digital Products Statement (Optional)
                           </p>
                           <label
                             htmlFor="statement-upload"
-                            className="cursor-pointer block mt-2"
+                            className="cursor-pointer block mt-1.5"
                           >
                             <span className="text-sm font-semibold text-primary">
                               Click here to upload your statement
                             </span>
-                            <span className="block text-xs text-muted-foreground mt-1">
+                            <span className="block text-xs text-muted-foreground mt-0.5">
                               Accepts png, jpeg, pdf
                             </span>
                             <input
@@ -425,12 +421,12 @@ export default function RetailMerchants() {
                             />
                           </label>
                         </div>
-                        <p className="text-xs text-muted-foreground text-center mt-3">
+                        <p className="text-xs text-muted-foreground text-center mt-2">
                           Uploading a statement is optional but helps us provide a more accurate proposal.
                         </p>
 
                         <Button
-                          className="mt-5 w-full rounded-lg btn-gradient"
+                          className="mt-3 w-full rounded-lg btn-gradient"
                           data-testid="button-step5-continue"
                           onClick={() => setStep(6)}
                         >
