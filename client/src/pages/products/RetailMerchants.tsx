@@ -36,9 +36,8 @@ const REASONS = [
 ];
 
 const MONTHLY_SPENDS = [
-  "Under $2K", "$2K – $5K",
-  "$5K – $10K", "$10K – $20K",
-  "$20K – $50K", "$50K – $250K",
+  "$2K – $10K", "$10K – $25K",
+  "$25K – $50K", "$50K – $250K",
   "$250K – $1M", "Over $1M",
 ];
 
@@ -174,7 +173,7 @@ export default function RetailMerchants() {
 
   const headerText = step === 6
     ? "Final step. Please fill in your details below so we can get to work securing the best bespoke rates for your business from our network of 90% of the UK's leading card payment processors. Your details will not be shared."
-    : "Complete this short form and get the most competitive quotes from the UK's leading FCA regulated card processing providers";
+    : "Complete this short form and get the most competitive quotes from the Middle East's card processing providers";
 
   return (
     <div className="min-h-screen bg-background">
@@ -214,12 +213,12 @@ export default function RetailMerchants() {
             </motion.div>
 
             {/* RIGHT — form card */}
-            <motion.div {...fadeUp} transition={{ delay: 0.15 }}>
+            <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="max-w-[85%] ml-auto w-full">
               <div className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(13,27,75,0.12)] bg-white">
 
                 {/* Dark header */}
-                <div className="bg-[#0D1B4B] px-5 py-4 text-center">
-                  <p className="text-white/90 text-sm leading-snug max-w-xs mx-auto">
+                <div className="bg-[#0D1B4B] px-6 py-4 text-center">
+                  <p className="text-white/90 text-sm leading-snug">
                     {headerText}
                   </p>
                 </div>
@@ -383,17 +382,13 @@ export default function RetailMerchants() {
                         <p className="text-sm font-semibold text-foreground mb-2">
                           Who is your current provider?
                         </p>
-                        <select
-                          data-testid="select-supplier"
+                        <Input
+                          data-testid="input-supplier"
                           value={supplier}
                           onChange={e => setSupplier(e.target.value)}
-                          className="w-full border border-border rounded-lg px-3.5 py-2.5 text-sm text-foreground bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none"
-                        >
-                          <option value="">Please select an option</option>
-                          {SUPPLIERS.map(s => (
-                            <option key={s} value={s}>{s}</option>
-                          ))}
-                        </select>
+                          placeholder="Please select an option"
+                          className="h-10 text-sm"
+                        />
 
                         <div className="mt-4 border border-dashed border-border rounded-lg p-4 text-center">
                           <p className="text-xs font-semibold text-foreground mb-1">
@@ -445,7 +440,7 @@ export default function RetailMerchants() {
                             { key: "firstName", placeholder: "First name", testId: "input-first-name" },
                             { key: "lastName", placeholder: "Last name", testId: "input-last-name" },
                             { key: "company", placeholder: "Company Name", testId: "input-company" },
-                            { key: "country", placeholder: "Postcode", testId: "input-postcode" },
+                            { key: "country", placeholder: "Country", testId: "input-country" },
                           ] as const).map(f => (
                             <div key={f.key}>
                               <Input
@@ -529,7 +524,7 @@ export default function RetailMerchants() {
                           You're all set!
                         </h3>
                         <p className="text-sm text-muted-foreground max-w-xs">
-                          A NuovoConnect specialist will reach out within one business day with a tailored digital products proposal.
+                          Our team will reach out within 2 business days with a tailored product proposal.
                         </p>
                       </motion.div>
                     )}
