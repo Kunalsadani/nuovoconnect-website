@@ -66,7 +66,6 @@ export function Navigation() {
               src={logoImg}
               alt="NuovoConnect"
               className="w-[36px] h-[36px] object-contain"
-              style={{ filter: "hue-rotate(220deg) saturate(0.95)" }}
             />
             <span
               className="text-[1.9rem] tracking-tight text-foreground"

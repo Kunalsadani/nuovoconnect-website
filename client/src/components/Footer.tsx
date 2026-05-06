@@ -13,7 +13,6 @@ export function Footer() {
                 src={logoImg}
                 alt="NuovoConnect"
                 className="w-[36px] h-[36px] object-contain"
-                style={{ filter: "hue-rotate(220deg) saturate(0.95)" }}
               />
               <span className="text-[1.9rem] tracking-tight text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800 }}>
                 NuovoConnect
