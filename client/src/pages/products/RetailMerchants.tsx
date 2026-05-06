@@ -22,20 +22,17 @@ const fadeUp = {
 
 const TOTAL_STEPS = 6;
 
-const PRODUCTS = [
-  "Mobile Top-ups",
-  "Data Bundles",
-  "Gift Cards",
-  "Gaming Pins",
-  "eSIMs",
-  "Utility Payments",
+const SALES_CHANNELS = [
+  "In-store / POS",
+  "Phone or Online Order",
+  "E-commerce / App",
 ];
 
 const REASONS = [
-  "Want to increase revenue",
-  "Expand product range",
-  "Driven by customer demand",
-  "Starting a new venture",
+  "Want to reduce the fees",
+  "Had a price increase",
+  "Dissatisfied with the provider",
+  "Provider closed the account",
 ];
 
 const MONTHLY_SPENDS = [
@@ -108,7 +105,7 @@ function CheckboxOption({
 export default function RetailMerchants() {
   const [step, setStep] = useState<Step>(1);
   const [currentlySells, setCurrentlySells] = useState("");
-  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+  const [selectedChannels, setSelectedChannels] = useState<string[]>([]);
   const [reason, setReason] = useState("");
   const [monthlySpend, setMonthlySpend] = useState("");
   const [supplier, setSupplier] = useState("");
@@ -124,8 +121,8 @@ export default function RetailMerchants() {
     if (typeof step === "number" && step > 1) setStep((step - 1) as Step);
   }
 
-  function toggleProduct(p: string) {
-    setSelectedProducts(prev =>
+  function toggleChannel(p: string) {
+    setSelectedChannels(prev =>
       prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]
     );
   }
@@ -147,7 +144,7 @@ export default function RetailMerchants() {
     try {
       const message = [
         `Currently sells digital products: ${currentlySells || "Not specified"}`,
-        `Products of interest: ${selectedProducts.length ? selectedProducts.join(", ") : "Not specified"}`,
+        `Sales channels: ${selectedChannels.length ? selectedChannels.join(", ") : "Not specified"}`,
         `Reason: ${reason || "Not specified"}`,
         `Monthly spend: ${monthlySpend || "Not specified"}`,
         `Current supplier: ${supplier || "Not specified"}`,
@@ -176,7 +173,7 @@ export default function RetailMerchants() {
   }
 
   const headerText = step === 6
-    ? "Final step. Please fill in your details so we can get you the best digital product rates for your business. Your details will not be shared."
+    ? "Final step. Please fill in your details below so we can get to work securing the best digital product rates for your business. Your details will not be shared."
     : "Complete this short form and get the most competitive quotes from NuovoConnect's global digital products network.";
 
   return (
@@ -258,7 +255,7 @@ export default function RetailMerchants() {
                           onClick={() => currentlySells && setStep(2)}
                           disabled={!currentlySells}
                         >
-                          Get Started <ArrowRight className="ml-2 w-4 h-4" />
+                          Get Bespoke Quotes <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>
                         <p className="flex items-start gap-2 text-xs text-muted-foreground mt-2">
                           <Lock className="w-3 h-3 mt-0.5 flex-shrink-0" />
@@ -276,14 +273,14 @@ export default function RetailMerchants() {
                         className="flex flex-col flex-1"
                       >
                         <p className="text-center text-sm font-semibold text-foreground mb-2">
-                          What digital products do you want to offer?
+                          How do you want to sell digital products?
                         </p>
                         <div className="space-y-1.5 flex-1">
-                          {PRODUCTS.map(p => (
+                          {SALES_CHANNELS.map(p => (
                             <CheckboxOption
                               key={p} label={p}
-                              checked={selectedProducts.includes(p)}
-                              onClick={() => toggleProduct(p)}
+                              checked={selectedChannels.includes(p)}
+                              onClick={() => toggleChannel(p)}
                               testId={`checkbox-${p.replace(/\s+/g, "-").toLowerCase()}`}
                             />
                           ))}
@@ -307,7 +304,7 @@ export default function RetailMerchants() {
                         className="flex flex-col flex-1"
                       >
                         <p className="text-center text-sm font-semibold text-foreground mb-2">
-                          What's the main reason you want to add digital products?
+                          What's the main reason you want to switch providers?
                         </p>
                         <div className="space-y-1.5 flex-1">
                           {REASONS.map(r => (
