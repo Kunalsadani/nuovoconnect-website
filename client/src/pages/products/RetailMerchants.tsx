@@ -533,17 +533,19 @@ export default function RetailMerchants() {
 
                   {/* Back + progress dots */}
                   {step !== "success" && (
-                    <div className="mt-4 flex items-center justify-between">
-                      <button
-                        type="button"
-                        onClick={goBack}
-                        data-testid="button-back"
-                        className={`flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors ${
-                          step === 1 ? "invisible" : ""
-                        }`}
-                      >
-                        <ArrowLeft className="w-3 h-3" /> Back
-                      </button>
+                    <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
+                      {step !== 1 ? (
+                        <button
+                          type="button"
+                          onClick={goBack}
+                          data-testid="button-back"
+                          className="flex items-center gap-1.5 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+                        >
+                          <ArrowLeft className="w-4 h-4" /> Back
+                        </button>
+                      ) : (
+                        <span />
+                      )}
                       <div className="flex items-center gap-1.5">
                         {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
                           <span
