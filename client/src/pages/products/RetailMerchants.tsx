@@ -213,7 +213,7 @@ export default function RetailMerchants() {
             </motion.div>
 
             {/* RIGHT — form card */}
-            <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="max-w-[85%] ml-auto w-full">
+            <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="max-w-[85%] mx-auto w-full">
               <div className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(13,27,75,0.12)] bg-white">
 
                 {/* Dark header */}
