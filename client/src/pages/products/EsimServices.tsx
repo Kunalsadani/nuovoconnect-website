@@ -20,7 +20,8 @@ const fadeUp = {
 export default function EsimServices() {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="eSIM Services" description="Offer global eSIM bundles and connectivity solutions for travelers, remote workers, and digital nomads across 170+ countries." path="/who-we-serve/esim-services" />
+      <SEO title="eSIM Services — Global Connectivity in 170+ Countries" description="Offer global eSIM bundles and instant connectivity solutions for travelers, remote workers, and digital nomads. No physical SIM required — activate instantly in 170+ countries." path="/who-we-serve/esim-services"
+        breadcrumbs={[{ name: "Who We Serve", url: "https://www.nuovoconnect.com/who-we-serve" }, { name: "eSIM Services", url: "https://www.nuovoconnect.com/who-we-serve/esim-services" }]} />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

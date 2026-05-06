@@ -21,7 +21,8 @@ const fadeUp = {
 export default function SuperApps() {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Super Apps" description="Enhance your super app ecosystem with digital value services including mobile top-ups, bill payments, gaming pins, and gift cards." path="/who-we-serve/super-apps" />
+      <SEO title="Super Apps — Embedded Digital Value for Your Platform" description="Enhance your super app with embedded digital value services — mobile top-ups, bill payments, gaming pins, gift cards, and eSIMs that keep users engaged inside your ecosystem." path="/who-we-serve/super-apps"
+        breadcrumbs={[{ name: "Who We Serve", url: "https://www.nuovoconnect.com/who-we-serve" }, { name: "Super Apps", url: "https://www.nuovoconnect.com/who-we-serve/super-apps" }]} />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

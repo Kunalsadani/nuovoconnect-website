@@ -55,7 +55,8 @@ export default function Banking() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Relocation Providers" description="Help relocated individuals stay connected with family through affordable mobile top-ups, data bundles, and digital services across borders." path="/who-we-serve/banking" />
+      <SEO title="Relocation Providers — Cross-Border Digital Services" description="Help relocated individuals stay connected with family through affordable international mobile top-ups, data bundles, and digital services across 170+ countries." path="/who-we-serve/banking"
+        breadcrumbs={[{ name: "Who We Serve", url: "https://www.nuovoconnect.com/who-we-serve" }, { name: "Relocation Providers", url: "https://www.nuovoconnect.com/who-we-serve/banking" }]} />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

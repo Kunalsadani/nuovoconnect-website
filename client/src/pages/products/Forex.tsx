@@ -21,7 +21,8 @@ const fadeUp = {
 export default function Forex() {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Forex" description="Help forex providers grow wallet share with digital value services — top-ups, gift cards, and bill payments alongside currency exchange and FX transfers." path="/who-we-serve/forex" />
+      <SEO title="Forex & Money Transfer — Add Digital Value to FX Services" description="Grow wallet share for your forex or money transfer platform with digital add-ons — mobile top-ups, gift cards, and bill payments alongside currency exchange and FX transfers." path="/who-we-serve/forex"
+        breadcrumbs={[{ name: "Who We Serve", url: "https://www.nuovoconnect.com/who-we-serve" }, { name: "Forex", url: "https://www.nuovoconnect.com/who-we-serve/forex" }]} />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

@@ -1,5 +1,5 @@
 import PDFDocument from "pdfkit";
-import XLSX from "xlsx";
+import ExcelJS from "exceljs";
 import fs from "fs";
 
 const LOGO = "client/src/assets/nuovoconnect-logo.png";
@@ -11,9 +11,13 @@ const JBD = "scripts/fonts/PlusJakartaSans-Bold.ttf";
 
 const ML = 50, MR = 50, PW = 595.28, W = PW - ML - MR, PB = 740;
 
-const wb = XLSX.readFile("attached_assets/Customer_proposal_1773135930801.xlsx");
-const ws = wb.Sheets[wb.SheetNames[0]];
-const raw = XLSX.utils.sheet_to_json(ws, { header: 1, defval: "" });
+const workbook = new ExcelJS.Workbook();
+await workbook.xlsx.readFile("attached_assets/Customer_proposal_1773135930801.xlsx");
+const ws = workbook.worksheets[0];
+const raw = [];
+for (let i = 1; i <= ws.rowCount; i++) {
+  raw.push(ws.getRow(i).values.slice(1));
+}
 
 const costRows = [];
 for (let i = 1; i <= 5; i++) {

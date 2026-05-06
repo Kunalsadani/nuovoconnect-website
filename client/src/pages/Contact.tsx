@@ -46,7 +46,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Contact Us" description="Get in touch with NuovoConnect to discuss your digital value services, mobile top-ups, and micropayments requirements." path="/contact" />
+      <SEO title="Contact Us — Get a Quote or Partnership Inquiry" description="Reach out to NuovoConnect to discuss digital value services, mobile top-ups, gift cards, and micropayments for your business. We respond within one business day." path="/contact" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

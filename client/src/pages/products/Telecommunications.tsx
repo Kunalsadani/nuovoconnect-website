@@ -21,7 +21,8 @@ const fadeUp = {
 export default function Telecommunications() {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Telecom" description="Help telecom providers grow ARPU and reduce churn with cross-border top-ups, data bundles, eSIMs, and digital value services." path="/who-we-serve/telecommunications" />
+      <SEO title="Telecommunications — Grow ARPU with Digital Value Services" description="Help telecom providers grow ARPU and reduce churn with cross-border mobile top-ups, data bundles, eSIMs, and digital value services across 170+ countries." path="/who-we-serve/telecommunications"
+        breadcrumbs={[{ name: "Who We Serve", url: "https://www.nuovoconnect.com/who-we-serve" }, { name: "Telecommunications", url: "https://www.nuovoconnect.com/who-we-serve/telecommunications" }]} />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

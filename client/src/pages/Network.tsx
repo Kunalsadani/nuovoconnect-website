@@ -30,7 +30,7 @@ export default function Network() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Network" description="NuovoConnect connects you to a global network of mobile operators, digital service providers, and payment platforms across 170+ countries." path="/network" />
+      <SEO title="Global Network — 600+ Operators in 170+ Countries" description="NuovoConnect's global network spans 600+ mobile operators, digital service providers, and payment platforms across 170+ countries. Connect once, reach everywhere." path="/network" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

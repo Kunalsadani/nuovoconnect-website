@@ -23,7 +23,8 @@ const fadeUp = {
 export default function Ewallets() {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="eWallets" description="Diversify revenue and supercharge user acquisition for your eWallet platform with digital value services, rewards, and loyalty programs." path="/who-we-serve/ewallets" />
+      <SEO title="eWallet Providers — Diversify Revenue with Digital Services" description="Supercharge your eWallet platform with digital value services — mobile top-ups, gift cards, gaming pins, and loyalty rewards that drive user acquisition and retention." path="/who-we-serve/ewallets"
+        breadcrumbs={[{ name: "Who We Serve", url: "https://www.nuovoconnect.com/who-we-serve" }, { name: "eWallets", url: "https://www.nuovoconnect.com/who-we-serve/ewallets" }]} />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

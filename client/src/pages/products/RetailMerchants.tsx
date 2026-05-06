@@ -178,9 +178,10 @@ export default function RetailMerchants() {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Retail Merchants"
-        description="Help your retail merchants grow basket size and footfall with digital airtime, data bundles, gift cards, and prepaid vouchers across 170+ countries."
+        title="Retail Merchants — Card Processing Quotes & Prepaid Services"
+        description="Compare card processing fees from top Middle East providers and grow basket size with digital airtime, data bundles, gift cards, and prepaid vouchers across 170+ countries."
         path="/who-we-serve/retail-merchants"
+        breadcrumbs={[{ name: "Who We Serve", url: "https://www.nuovoconnect.com/who-we-serve" }, { name: "Retail Merchants", url: "https://www.nuovoconnect.com/who-we-serve/retail-merchants" }]}
       />
       <Navigation />
 

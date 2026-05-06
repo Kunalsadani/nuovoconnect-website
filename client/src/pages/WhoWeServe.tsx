@@ -31,7 +31,7 @@ export default function WhoWeServe() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Who We Serve" description="NuovoConnect serves retail merchants, telecom, eWallets, relocation providers, forex, super apps, and gaming." path="/who-we-serve" />
+      <SEO title="Industries We Serve — Telecom, eWallets, Gaming & More" description="NuovoConnect partners with retail merchants, telecoms, eWallets, forex providers, super apps, gaming companies, and relocation services to deliver digital value services globally." path="/who-we-serve" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

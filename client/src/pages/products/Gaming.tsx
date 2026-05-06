@@ -24,7 +24,8 @@ const fadeUp = {
 export default function Gaming() {
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Gaming" description="Help gaming companies and publishers acquire players, boost engagement, reward winners, and grow in-app revenue with cost-effective digital value services and real-time rewards." path="/who-we-serve/gaming" />
+      <SEO title="Gaming Companies — Player Rewards & Digital Incentives" description="Acquire more players, boost engagement, and grow in-app revenue with real-time digital rewards — gaming pins, gift cards, and mobile top-ups for gaming publishers worldwide." path="/who-we-serve/gaming"
+        breadcrumbs={[{ name: "Who We Serve", url: "https://www.nuovoconnect.com/who-we-serve" }, { name: "Gaming", url: "https://www.nuovoconnect.com/who-we-serve/gaming" }]} />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">

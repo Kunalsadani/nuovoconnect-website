@@ -42,7 +42,7 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Products" description="Explore NuovoConnect's core offerings: global connectivity, global bank accounts, payment processing, and loyalty & retention tools." path="/products" />
+      <SEO title="Products — Mobile Top-Ups, Gift Cards, eSIM & More" description="Explore NuovoConnect's full product suite: mobile top-ups, data bundles, gift cards, gaming pins, eSIMs, crypto vouchers, and payment processing for B2B partners worldwide." path="/products" />
       <Navigation />
 
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
