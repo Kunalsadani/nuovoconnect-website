@@ -1,5 +1,8 @@
 {
   "framework": "nextjs",
+  "rewrites": [
+    { "source": "/bimi-logo.svg", "destination": "/api/bimi-logo" }
+  ],
   "redirects": [
     { "source": "/who-we-serve/retail-networks", "destination": "/who-we-serve/retail-merchants", "permanent": true },
     { "source": "/who-we-serve/mobile-operators", "destination": "/who-we-serve/telecommunications", "permanent": true },
