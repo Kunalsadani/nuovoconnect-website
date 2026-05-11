@@ -1,0 +1,61 @@
+import { NextResponse } from "next/server";
+
+const SVG = `<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG Tiny 1.2//EN" "http://www.w3.org/Graphics/SVG/1.2/Tiny/svg12.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     version="1.2"
+     baseProfile="tiny"
+     viewBox="0 0 500 500"
+     width="500"
+     height="500"
+     xml:space="preserve">
+  <title>NuovoConnect</title>
+  <defs>
+    <linearGradient id="gp"
+                    x1="400" y1="50" x2="100" y2="450"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#E2B8FF"/>
+      <stop offset="55%"  stop-color="#B880F5"/>
+      <stop offset="100%" stop-color="#8050CC"/>
+    </linearGradient>
+    <linearGradient id="gb"
+                    x1="170" y1="50" x2="430" y2="450"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#90D8FF"/>
+      <stop offset="55%"  stop-color="#38BCFF"/>
+      <stop offset="100%" stop-color="#10A6EE"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="500" height="500" fill="#FFFFFF"/>
+  <g transform="translate(250,250)">
+    <path fill="url(#gp)" d="
+      M 0,-200
+      L -154,-46
+      Q -200,0 -154,46
+      L 0,200
+      L 0,80
+      L -80,0
+      L 0,-80
+      Z
+    "/>
+    <path fill="url(#gb)" d="
+      M 0,-200
+      L 0,-80
+      L 80,0
+      L 0,80
+      L 0,200
+      L 154,46
+      Q 200,0 154,-46
+      Z
+    "/>
+  </g>
+</svg>`;
+
+export async function GET() {
+  return new NextResponse(SVG, {
+    headers: {
+      "Content-Type": "image/svg+xml",
+      "Cache-Control": "public, max-age=86400",
+    },
+  });
+}
